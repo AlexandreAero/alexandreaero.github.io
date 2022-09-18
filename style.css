@@ -22,7 +22,7 @@ body {
     margin-right: auto;
     height: fit-content;
     width: 40%;
-    background-image: linear-gradient(to right,#e052a0,#f15c41)!important;
+    background-image: linear-gradient(to right, #e052a0, #f15c41)!important;
     border-radius: 50px;
     text-align: center;
 }
@@ -42,24 +42,24 @@ body {
     width: 124px;
 }
 
-#socials {
+.socials {
     text-align: center;
     margin-top: 20px;
 }
 
-#pro {
+.projects > div {
     height: 240px;
     width: 35%;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    background-image: linear-gradient(to right,#e052a0,#f15b41c4)!important;
+    background-image: linear-gradient(to right, #e052a0, #f15b41c4)!important;
     cursor: pointer;
     border-radius: 22px;
     position: relative;
 }
 
-#image-main > img {
+.image-main > img {
     float: left;
     margin-top: 18px;
     margin-left: 18px;
@@ -68,13 +68,13 @@ body {
     border-radius: 20px;
 }
 
-#data-container {
+.data-container {
     position: absolute;
     top: -11px;
     left: 235px;
     word-wrap: break-word;
 }
 
-#projects > div > div > h2 {
+.projects > div > div > h2 {
     font-size: 32px;
 }
