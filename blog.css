@@ -81,9 +81,9 @@ body {
     display: block;
     cursor: pointer;
     margin-top: 15px;
-    border: 2px solid #de1ddec4;
+    border: 2px solid #ffffff;
 	width: 150px;
-	height: 70px;
+    height: 65px;
 	border-radius: 15px;
 	color: #fff;
 	background-image: linear-gradient(to right, #f15b41c4, #e052a0)!important;

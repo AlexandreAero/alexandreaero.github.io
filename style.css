@@ -81,12 +81,12 @@ body {
 
 .blog-button {
     cursor: pointer;
-    border: 2px solid #de1ddec4;
-	width: 150px;
-	height: 70px;
-	border-radius: 15px;
-	color: #fff;
-	background-image: linear-gradient(to right, #f15b41c4, #e052a0)!important;
+    border: 2px solid #ffffff;
+    width: 140px;
+    height: 55px;
+    border-radius: 15px;
+    color: #fff;
+    background-image: linear-gradient(to right, #f15b41c4, #e052a0)!important;
     font-size: 19px;
     margin-bottom: 20px;
 }
