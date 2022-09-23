@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+
+h1,
+h2,
+h3 {
+    font-family: 'Source Code Pro', monospace;
+    color: white;
+}
+
+body {
+    /* #e052a090 | #eaeaea */
+    background-color: #eaeaea;
+}
+
+.header {
+    height: fit-content;
+    text-align: center;
+}
+
+.logo {
+    margin-top: 50px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 30%;
+    position: relative;
+    height: 124px;
+    width: 124px;
+}
+
+.blog-posts {
+    transform: scale(0.8);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.blog-posts > section {
+    margin: auto;
+    width: 380px;
+    background-image: linear-gradient(to right, #e052a0, #f15b41c4)!important;
+    cursor: pointer;
+    border-radius: 22px;
+    min-height: 530px;
+    height: fit-content;
+}
+
+.title {
+    text-align: center;
+    font-size: 20px;
+}
+
+.author {
+    text-align: center;
+    font-size: 18px;
+}
+
+.date {
+    text-align: center;
+    font-size: 17px;
+}
+
+.description {
+    text-align: center;
+    font-size: 16px;
+}
+
+.tags {
+    text-align: left;
+    display: flex;
+}
+
+.tags > h1 {
+    background-color: #fe645c;
+    border-radius: 30px;
+    margin-left: 10px;
+    font-size: 17px;
+}
+
+.back-button {
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+    margin-top: 15px;
+    border: 2px solid #de1ddec4;
+	width: 150px;
+	height: 70px;
+	border-radius: 15px;
+	color: #fff;
+	background-image: linear-gradient(to right, #f15b41c4, #e052a0)!important;
+    font-size: 19px;
+}
