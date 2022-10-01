@@ -44,23 +44,31 @@ body {
     height: fit-content;
 }
 
-.title {
+.blog-posts > section > img {
+    width: 150px;
+    height: 150px;
+}
+
+.title,
+.author,
+.date,
+.description {
     text-align: center;
+}
+
+.title {
     font-size: 20px;
 }
 
 .author {
-    text-align: center;
     font-size: 18px;
 }
 
 .date {
-    text-align: center;
     font-size: 17px;
 }
 
 .description {
-    text-align: center;
     font-size: 16px;
 }
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pilot Alex</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <!--Highlight.js-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+  <!--End Highlight.js-->
+  <link rel="stylesheet" href="./post.css">
+</head>
+<body>
+  <h1 class="title">The painful process of making JavaScript talk to Microsoft Flight Simulator.</h1>
+  <h2 class="author">By Pilot Alex</h1>
+  <h3 class="date">25/09/2022</h3>
+  <h3 class="description">Communication between different programming languages can be tricky, but imagine talking to a flight simulator. This is the story of I made the 1.6.0 update of Airline Announcements V1.</h3>
+  <hr>
+  <section class="main-content-wrapper">
+    <h2 class="sub-section-title">The begining</h2>
+    <h3>When I started to work on 1.6.0 update for MSFS I need to find a way to communicate between my NodeJs app and MSFS to get internal simvars data.</h3>
+    <h3>Usually, this is done in C++ with a MSFS/Microsoft API called SimConnect, SimConnect allows us to grab data form MSFS with their key names.</h3>
+    <h2 class="sub-section-title">The options</h2>
+    <h3>Let's list my initial options:</h3>
+    <h3>- Use a NodeJs wrapper of the SimConnect API</h3>
+    <h3>- Use a Python SimConnect wrapper then serializing the variables in a .json file</h3>
+    <h3>- Use a local server with Flask (Python) and make web requests</h3>
+    <h3>- Use SimConnect in C++ then serializing the variables in a .json file</h3>
+    <h3>- Use SimConnect in C++ and a DLL to pass call and pass data with functions</h3>
+    <h2 class="sub-section-title">NodeJs wrapper of the SimConnect API</h2>
+    <h3>This would have been the easyest options here. Yes, "would", because sadly it didn't work 😐.</h3>
+    <h3>Some NodeJs wrapper of SimConnect existed, but I was having some troubles to build them. I usually got an error related to a NodeJs GYP error.</h3>
+    <h3>So I decied to move since I didn't want to rewrite the entire wrapper.</h3>
+    <h2 class="sub-section-title">Python SimConnect wrapper then serializing the variables in a .json file</h2>
+    <h3>I'm not a fan of this option, I don't like this idea because you need a lot of validation to make this work.</h3>
+    <h3>Let's say you want to access the data from NodeJs but the file doesn't exists? Or some data is missing? Or the JSON is still being written? Or the JSON is simply invalid due to multiple writting calls.</h3>
+    <h3>But still, I tried. I used this Python wrapper: https://github.com/odwdinc/Python-SimConnect</h3>
+    <h3>TODO</h3>
+  </section>
+  <!--Driver code for highlighting-->
+  <script>hljs.highlightAll();</script>
+</body>

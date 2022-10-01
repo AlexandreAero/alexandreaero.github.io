@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pilot Alex</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <!--Highlight.js-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+ <!--End Highlight.js-->
+  <link rel="stylesheet" href="./post.css">
+</head>
+<body>
+  <h1 class="title">That time my Discord server has been raided because of a dumb mistake.</h1>
+  <h2 class="author">By Pilot Alex</h1>
+  <h3 class="date">24/09/2022</h3>
+  <h3 class="description">I used to have a Discord server a little while ago with my friends, it was a private server with only 4-5 people in it. But things started to get messy when I developed a Discord bot that leaked our server secret key.</h3>
+  <hr>
+  <section class="main-content-wrapper">
+    <h2 class="sub-section-title">The begining</h2>
+    <h3>Everyone makes mistakes right? Well, I once made a big mistake, let me explain what happened to my Discord server in this post.</h3>
+    <h3>This happened in 2020, I had a discord server that was used to talk with some of my friends. 5 people were in the server.</h3>
+    <h3>And as a developer, I wanted to create a Discord server bot using JavaScript/NodeJs. So I started to look at some tutorials, create my Discord dev account, got my keys and started to code.</h3>
+    <h3>The library I used was DiscordJS. It was great and easy.</h3>
+    <h2 class="sub-section-title">First error...</h2>
+    <h3>This is where I will make my first big mistake, coding the bot in an online public code editor. Something similar to Repl.it named "Glitch": https://glitch.com/</h3>
+    <h3>Don't ask me why I had this bad idea, I followed a tutorial on creating a Discord bot and the guy used this editor, so I mean...</h3>
+    <h3>So what happened is that I hard coded the private bot key in the main file, yep, visible to anyone. It looked like something like this:</h3>
+    <pre><code>const key = "my-key-was-here";</code></pre>
+    <h3>Then I logged the bot using something like:</h3>
+    <pre><code>client.login(key);</code></pre>
+    <h3>Then, I hosted my blog on Heroku for free (wich isn't the case anymore 😒). And I let the public code on Glitch.</h3>
+    <h2 class="sub-section-title">The fail</h2>
+    <h3>Of course, a little while after my server got raided. Every channels where renamed, then deleted, the server icon picture was changed, messages were deleted, roles too.</h3>
+    <h3>Well then I quiclky realised this was because of me/my bot. I eventually decided to delete the server.</h3>
+    <h2 class="sub-section-title">What I could have done</h2>
+    <h3>- Don't use a public IDE for coding.</h3>
+    <h3>- Use Environment Variables in NodeJs with process.env</h3>
+    <pre><code>TOKEN = "my-key-here"; // .env file</code></pre>
+    <pre><code>client.login(process.env.TOKEN); // index.js</code></pre>
+    <h3>The .env file should be added to the gitignore so it's not pushed to the GitHub repository.</h3>
+    <h2 class="sub-section-title">Wrapping up</h2>
+    <h3>Well this was a great learning experience of course, I lost my server but I learnt a lot, and that's the most important thing.</h3>
+  </section>
+  <!--Driver code for highlighting-->
+  <script>hljs.highlightAll();</script>
+</body>

@@ -47,6 +47,11 @@ body {
     margin-top: 20px;
 }
 
+.socials > input {
+    width: 48px; 
+    height: 48px;
+}
+
 .projects > div {
     height: 240px;
     width: 35%;
@@ -59,6 +64,14 @@ body {
     position: relative;
 }
 
+.data-container {
+    word-wrap: break-word;
+    position: absolute;
+    top: -11px;
+    left: 235px;
+}
+
+/* Style main project image*/
 .image-main > img {
     float: left;
     margin-top: 18px;
@@ -68,11 +81,10 @@ body {
     border-radius: 20px;
 }
 
-.data-container {
-    position: absolute;
-    top: -11px;
-    left: 235px;
-    word-wrap: break-word;
+/* Style used language images */
+.data-container > img {
+    width: 48px; 
+    height: 48px;
 }
 
 .projects > div > div > h2 {
