@@ -10,14 +10,7 @@ fetch(url)
 
     const contentWrapper = document.getElementById("main-content-wrapper");
 
-    for(let section = 0; section < out["content"]; section++) {
-        for(let line = 0; line < out["content"][section]["lines"]; line++) {
-            let text = document.createElement("h3");
-            text.innerHTML = out["content"][section]["lines"][line];
-    
-            contentWrapper.innerHTML += text;
-        }
-    }
+    console.log(out["content"][0]["lines"][0]);
 })
 .catch((err) => {
     throw err 
