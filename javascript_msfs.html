@@ -27,14 +27,15 @@
     <h3>Let's list my initial options:</h3>
     <h3>- Use a NodeJs wrapper of the SimConnect API</h3>
     <h3>- Use a Python SimConnect wrapper then serializing the variables in a .json file</h3>
-    <h3>- Use a local server with Flask (Python) and make web requests</h3>
     <h3>- Use SimConnect in C++ then serializing the variables in a .json file</h3>
     <h3>- Use SimConnect in C++ and a DLL to pass call and pass data with functions</h3>
     <h3>- Use WASM to compile C++ to JavaScript readable code</h3>
+    <!--NodeJs wrapper of the SimConnect API-->
     <h2 class="sub-section-title">NodeJs wrapper of the SimConnect API</h2>
     <h3>This would have been the easyest options here. Yes, "would", because sadly it didn't work 😐.</h3>
     <h3>Some NodeJs wrapper of SimConnect existed, but I was having some troubles to build them. I usually got an error related to a NodeJs GYP error.</h3>
     <h3>So I decied to move since I didn't want to rewrite the entire wrapper.</h3>
+    <!--Python SimConnect wrapper then serializing the variables in a .json file-->
     <h2 class="sub-section-title">Python SimConnect wrapper then serializing the variables in a .json file</h2>
     <h3>I'm not a fan of this option, I don't like this idea because you need a lot of validation to make this work.</h3>
     <h3>Let's say you want to access the data from NodeJs but the file doesn't exists? Or some data is missing? Or the JSON is still being written? Or the JSON is simply invalid due to multiple writting calls.</h3>
@@ -61,6 +62,17 @@
     <h3>No, we need to write the data to a JSON file.</h3>
     <h3>The idea behind that is to create an .exe of the final python script that take args. The arg will be the requested simvar key name.</h3>
     <h3>This way I can execute the .exe with some arguments from NodeJs. Then take a look a the .json file created by the .exe.</h3>
+    <!--WASM to compile C++ to JavaScript readable code-->
+    <h2 class="sub-section-title">WASM to compile C++ to JavaScript readable code</h2>
+    <h3>First of all, what is WASM? WASM stands for WebAssembly. Here is the definition from the offial WASM org website:</h3>
+    <q>WebAssembly (abbreviated Wasm) is a binary instruction format for a stack-based virtual machine. Wasm is designed as a portable compilation target for programming languages, enabling deployment on the web for client and server applications.</q>
+    <h3>Basically, WASM allows you to run code written in multiple languages on the web to perform specific heavy tasks. Instead of writing this specific task in a slower language such as JavaScript.</h3>
+    <h3>In my case, I initially wanted to write a C++ program to get the variables from the simulator using the C++ SimConnect API. Then compile this C++ program to a binary WASM file, then use this file in the Electron app.</h3>
+    <h3>Sadly, the C++ SimConnect API heavily relies on the windows.h header file.</h3>
+    <h3>This windows.h header file is a header file from Microsoft that allows you to access Win32 API functions from C or C++.</h3>
+    <h3>And the issue is that the windows.h header file contains a lot of non portable functions such as for creating windows.</h3>
+    <h3>Those functions are Windows specific and have no representation on a web page since they aren't implemented on the web platform.</h3>
+    <h3>More here: https://github.com/emscripten-core/emsdk/issues/153</h3>
   </section>
   <!--Driver code for highlighting-->
   <script>hljs.highlightAll();</script>

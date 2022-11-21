@@ -2,9 +2,14 @@
 
 h1,
 h2,
-h3 {
+h3,
+q {
     font-family: 'Source Code Pro', monospace;
     color: white;
+}
+
+q {
+    font-style: italic;
 }
 
 body {
