@@ -10,7 +10,15 @@ fetch(url)
 
     const contentWrapper = document.getElementById("main-content-wrapper");
 
-    console.log(out["content"][0]["lines"][0]);
+    let obj = JSON.parse(out);
+
+    let content = obj["content"];
+
+    for(let sectionI = 0; sectionI < Object.keys(content).length; sectionI++) {
+        for(let lineI = 0; lineI < Object.keys(content[i]["lines"]).length; lineI++) {
+            console.log(content[sectionI]["lines"][lineI]);
+        }
+    }
 })
 .catch((err) => {
     throw err 
