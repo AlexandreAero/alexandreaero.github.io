@@ -35,6 +35,8 @@ fetch(url)
             }
         }
     }
+
+    hljs.highlightAll();
 })
 .catch((err) => {
     throw err 
