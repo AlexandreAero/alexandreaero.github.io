@@ -10,27 +10,48 @@
         "JavaScript"
     ],
     "content": [
-        "[The begining] Everyone makes mistakes right? Well, I once made a big mistake, let me explain what happened to my Discord server in this post.",
-        "[The begining] This happened in 2020, I had a discord server that was used to talk with some of my friends. 5 people were in the server.",
-        "[The begining] And as a developer, I wanted to create a Discord server bot using JavaScript/NodeJs. So I started to look at some tutorials, create my Discord dev account, got my keys and started to code.",
-        "[The begining] The library I used was DiscordJS. It was great and easy.",
-
-        "[First error...] This is where I will make my first big mistake, coding the bot in an online public code editor. Something similar to Repl.it named 'Glitch': https://glitch.com/",
-        "[First error...] Don't ask me why I had this bad idea, I followed a tutorial on creating a Discord bot and the guy used this editor, so I mean...",
-        "[First error...] So what happened is that I hard coded the private bot key in the main file, yep, visible to anyone. It looked like something like this:",
-        "[First error...] const key = 'my-key-was-here';",
-        "[First error...] Then I logged the bot using something like:",
-        "[First error...] Then, I hosted my blog on Heroku for free (wich isn't the case anymore 😒). And I let the public code on Glitch.",
-        
-        "[The fail] Of course, a little while after my server got raided. Every channels where renamed, then deleted, the server icon picture was changed, messages were deleted, roles too.",
-        "Well then I quiclky realised this was because of me/my bot. I eventually decided to delete the server.",
-        
-        "[What I could have done] - Don't use a public IDE for coding.",
-        "[What I could have done] - Use Environment Variables in NodeJs with process.env",
-        "[What I could have done] TOKEN = 'my-key-here'; // .env file",
-        "[What I could have done] client.login(process.env.TOKEN); // index.js",
-        "[What I could have done] The .env file should be added to the gitignore so it's not pushed to the GitHub repository.",
-   
-        "[Wrapping up] Well this was a great learning experience of course, I lost my server but I learnt a lot, and that's the most important thing."
+        {
+            "title": "The begining",
+            "lines": [
+                "Everyone makes mistakes right? Well, I once made a big mistake, let me explain what happened to my Discord server in this post.",
+                "This happened in 2020, I had a discord server that was used to talk with some of my friends. 5 people were in the server.",
+                "And as a developer, I wanted to create a Discord server bot using JavaScript/NodeJs. So I started to look at some tutorials, create my Discord dev account, got my keys and started to code.",
+                "The library I used was DiscordJS. It was great and easy."
+            ]
+        },
+        {
+            "title": "First error...",
+            "lines": [
+                "This is where I will make my first big mistake, coding the bot in an online public code editor. Something similar to Repl.it named 'Glitch': https://glitch.com/",
+                "Don't ask me why I had this bad idea, I followed a tutorial on creating a Discord bot and the guy used this editor, so I mean...",
+                "So what happened is that I hard coded the private bot key in the main file, yep, visible to anyone. It looked like something like this:",
+                "const key = 'my-key-was-here';",
+                "Then I logged the bot using something like:",
+                "Then, I hosted my blog on Heroku for free (wich isn't the case anymore 😒). And I let the public code on Glitch."
+            ]
+        },
+        {
+            "title": "The fail",
+            "lines": [
+                "Of course, a little while after my server got raided. Every channels where renamed, then deleted, the server icon picture was changed, messages were deleted, roles too.",
+                "Well then I quiclky realised this was because of me/my bot. I eventually decided to delete the server."
+            ]
+        },
+        {
+            "title": "What I could have done",
+            "lines": [
+                "- Don't use a public IDE for coding.",
+                "- Use Environment Variables in NodeJs with process.env",
+                "TOKEN = 'my-key-here'; // .env file",
+                "client.login(process.env.TOKEN); // index.js",
+                "The .env file should be added to the gitignore so it's not pushed to the GitHub repository."
+            ]
+        },
+        {
+            "title": "Wrapping up",
+            "lines": [
+                "Well this was a great learning experience of course, I lost my server but I learnt a lot, and that's the most important thing."
+            ]
+        }
     ]
 }

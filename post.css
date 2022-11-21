@@ -48,11 +48,11 @@ pre code {
     margin-top: 25px;
 }
 
-.title,
-.author,
-.date,
-.description,
-.main-content-wrapper {
+#title,
+#author,
+#date,
+#description,
+#main-content-wrapper {
     inline-size: 70%;
     justify-content: center;
     text-align: center;
@@ -65,11 +65,11 @@ pre code {
     font-size: 25px;
 }
 
-.main-content-wrapper {
+#main-content-wrapper {
     margin-bottom: 50px;
 }
 
-.main-content-wrapper > h3 {
+#main-content-wrapper > h3 {
     font-size: 17px;
     text-align: justify;
     word-spacing: normal;
