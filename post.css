@@ -20,6 +20,25 @@ hr {
     margin-bottom: 20px;
 }
 
+pre code {
+    text-align: left;
+}
+
+.header {
+    height: fit-content;
+    text-align: center;
+}
+
+.logo {
+    margin-top: 15px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 30%;
+    position: relative;
+    height: 124px;
+    width: 124px;
+}
+
 .title {
     margin-top: 25px;
 }

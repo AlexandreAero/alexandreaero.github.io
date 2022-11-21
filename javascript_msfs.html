@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="./post.css">
 </head>
 <body>
+  <header class="header">
+    <img class="logo" src="./assets/Mandalorian.png">
+  </header>
   <h1 class="title">The painful process of making JavaScript talk to Microsoft Flight Simulator.</h1>
   <h2 class="author">By Pilot Alex</h1>
   <h3 class="date">25/09/2022</h3>
@@ -27,6 +30,7 @@
     <h3>- Use a local server with Flask (Python) and make web requests</h3>
     <h3>- Use SimConnect in C++ then serializing the variables in a .json file</h3>
     <h3>- Use SimConnect in C++ and a DLL to pass call and pass data with functions</h3>
+    <h3>- Use WASM to compile C++ to JavaScript readable code</h3>
     <h2 class="sub-section-title">NodeJs wrapper of the SimConnect API</h2>
     <h3>This would have been the easyest options here. Yes, "would", because sadly it didn't work 😐.</h3>
     <h3>Some NodeJs wrapper of SimConnect existed, but I was having some troubles to build them. I usually got an error related to a NodeJs GYP error.</h3>
@@ -35,7 +39,28 @@
     <h3>I'm not a fan of this option, I don't like this idea because you need a lot of validation to make this work.</h3>
     <h3>Let's say you want to access the data from NodeJs but the file doesn't exists? Or some data is missing? Or the JSON is still being written? Or the JSON is simply invalid due to multiple writting calls.</h3>
     <h3>But still, I tried. I used this Python wrapper: https://github.com/odwdinc/Python-SimConnect</h3>
-    <h3>TODO</h3>
+    <h3>Usage:</h3>
+    <pre><code>
+      from SimConnect import *
+
+      # Create SimConnect link
+      sm = SimConnect()
+      # Note the default _time is 2000 to be refreshed every 2 seconds
+      aq = AircraftRequests(sm, _time=2000)
+
+      # Get the aircraft's current altitude
+      altitude = aq.get("PLANE_ALTITUDE")
+
+      # Print altitude
+      print(altitude)
+
+      # Cleanup exit
+      sm.exit()
+    </code></pre>
+    <h3>As you can see it's really simple and straight forward compared to the native C++ SimConnect API wich requires you to use a struct, cast data etc...</h3>
+    <h3>No, we need to write the data to a JSON file.</h3>
+    <h3>The idea behind that is to create an .exe of the final python script that take args. The arg will be the requested simvar key name.</h3>
+    <h3>This way I can execute the .exe with some arguments from NodeJs. Then take a look a the .json file created by the .exe.</h3>
   </section>
   <!--Driver code for highlighting-->
   <script>hljs.highlightAll();</script>
