@@ -1,7 +1,7 @@
-let url = 'https://raw.githubusercontent.com/AlexandreAero/alexandreaero.github.io/main/test.json';
+let url = 'https://raw.githubusercontent.com/AlexandreAero/alexandreaero.github.io/main/posts/a.json';
 
 fetch(url)
 .then(res => res.json())
 .then(out =>
-  console.log('Checkout this JSON! ', out))
+  console.log(out["author"]))
 .catch(err => { throw err });
