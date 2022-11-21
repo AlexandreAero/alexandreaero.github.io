@@ -9,10 +9,8 @@ fetch(url)
     document.getElementById("description").innerHTML = out["description"];
 
     const contentWrapper = document.getElementById("main-content-wrapper");
-
-    let obj = JSON.parse(out);
-
-    let content = obj["content"];
+    
+    let content = out["content"];
 
     for(let sectionI = 0; sectionI < Object.keys(content).length; sectionI++) {
         for(let lineI = 0; lineI < Object.keys(content[i]["lines"]).length; lineI++) {
