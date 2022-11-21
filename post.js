@@ -8,13 +8,32 @@ fetch(url)
     document.getElementById("date").innerHTML = out["date"];
     document.getElementById("description").innerHTML = out["description"];
 
-    const contentWrapper = document.getElementById("main-content-wrapper");
+    let contentWrapper = document.getElementById("main-content-wrapper");
     
     let content = out["content"];
 
     for(let sectionI = 0; sectionI < Object.keys(content).length; sectionI++) {
-        for(let lineI = 0; lineI < Object.keys(content[i]["lines"]).length; lineI++) {
-            console.log(content[sectionI]["lines"][lineI]);
+        let text = document.createElement("h2");
+        text.innerHTML = content[sectionI]["title"];
+        text.id = "sub-section-title";
+
+        contentWrapper.append(text);
+
+        for(let lineI = 0; lineI < Object.keys(content[sectionI]["lines"]).length; lineI++) {
+            let line = content[sectionI]["lines"][lineI];
+
+            if(line.includes("[CODE]")) {
+                let pre = document.createElement("pre");
+                let code = document.createElement("code").innerHTML = line;
+                pre.append(code);
+
+                contentWrapper.append(pre);
+            } else {
+                let text = document.createElement("h3");
+                text.innerHTML = line;
+
+                contentWrapper.append(text);
+            }
         }
     }
 })

@@ -44,7 +44,7 @@ pre code {
     width: 124px;
 }
 
-.title {
+#title {
     margin-top: 25px;
 }
 
@@ -60,7 +60,7 @@ pre code {
     margin: auto;
 }
 
-.sub-section-title {
+#sub-section-title {
     text-align: left;
     font-size: 25px;
 }
