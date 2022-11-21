@@ -8,8 +8,17 @@ fetch(url)
     document.getElementById("date").innerHTML = out["date"];
     document.getElementById("description").innerHTML = out["description"];
 
-    const content = document.getElementById("main-content-wrapper");
+    const contentWrapper = document.getElementById("main-content-wrapper");
+
+    for(let section = 0; section < out["content"]; section++) {
+        for(let line = 0; line < out["content"][section]["lines"]; line++) {
+            let text = document.createElement("h3");
+            text.innerHTML = out["content"][section]["lines"][line];
+    
+            contentWrapper.innerHTML += text;
+        }
+    }
 })
-.catch((err) => { 
+.catch((err) => {
     throw err 
 });
