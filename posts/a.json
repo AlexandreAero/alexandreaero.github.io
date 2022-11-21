@@ -27,6 +27,7 @@
                 "So what happened is that I hard coded the private bot key in the main file, yep, visible to anyone. It looked like something like this:",
                 "[CODE] const key = 'my-key-was-here';",
                 "Then I logged the bot using something like:",
+                "[CODE] client.login(key);",
                 "Then, I hosted my blog on Heroku for free (wich isn't the case anymore 😒). And I let the public code on Glitch."
             ]
         },

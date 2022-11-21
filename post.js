@@ -23,11 +23,10 @@ fetch(url)
             let line = content[sectionI]["lines"][lineI];
 
             if(line.includes("[CODE]")) {
-                let pre = document.createElement("pre");
-                let code = document.createElement("code").innerHTML = line;
-                pre.append(code);
+                let lineCpy = line.replace("[CODE]", "");
+                let str = `<pre><code>${lineCpy}</code></pre>`;
 
-                contentWrapper.append(pre);
+                contentWrapper.insertAdjacentHTML("beforeend", str);
             } else {
                 let text = document.createElement("h3");
                 text.innerHTML = line;
