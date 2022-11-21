@@ -25,9 +25,9 @@
                 "This is where I will make my first big mistake, coding the bot in an online public code editor. Something similar to Repl.it named 'Glitch': https://glitch.com/",
                 "Don't ask me why I had this bad idea, I followed a tutorial on creating a Discord bot and the guy used this editor, so I mean...",
                 "So what happened is that I hard coded the private bot key in the main file, yep, visible to anyone. It looked like something like this:",
-                "[CODE] const key = 'my-key-was-here';",
+                "[CODE]const key = 'my-key-was-here';",
                 "Then I logged the bot using something like:",
-                "[CODE] client.login(key);",
+                "[CODE]client.login(key);",
                 "Then, I hosted my blog on Heroku for free (wich isn't the case anymore 😒). And I let the public code on Glitch."
             ]
         },
@@ -43,8 +43,8 @@
             "lines": [
                 "- Don't use a public IDE for coding.",
                 "- Use Environment Variables in NodeJs with process.env",
-                "[CODE] TOKEN = 'my-key-here'; // .env file",
-                "[CODE] client.login(process.env.TOKEN); // index.js",
+                "[CODE]TOKEN = 'my-key-here'; // .env file",
+                "[CODE]client.login(process.env.TOKEN); // index.js",
                 "The .env file should be added to the gitignore so it's not pushed to the GitHub repository."
             ]
         },
