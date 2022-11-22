@@ -1,0 +1,68 @@
+{
+    "title": "The painful process of making JavaScript talk to Microsoft Flight Simulator.",
+    "author": "By Pilot Alex",
+    "date": "25/09/2022",
+    "description": "Communication between different programming languages can be tricky, but imagine talking to a flight simulator. This is the story of I made the 1.6.0 update of Airline Announcements V1.",
+    "tags": [
+        "C",
+        "Golang",
+        "JavaScript",
+        "Nodejs"
+    ],
+    "content": [
+        {
+            "title": "The begining",
+            "lines": [
+                "When I started to work on 1.6.0 update for MSFS I need to find a way to communicate between my NodeJs app and MSFS to get internal simvars data.",
+                "Usually, this is done in C++ with a MSFS/Microsoft API called SimConnect, SimConnect allows us to grab data form MSFS with their key names."
+            ]
+        },
+        {
+            "title": "The options",
+            "lines": [
+                "Let's list my initial options:",
+                "- Use a NodeJs wrapper of the SimConnect API",
+                "- Use a Python SimConnect wrapper then serializing the variables in a .json file",
+                "- Use SimConnect in C++ then serializing the variables in a .json file",
+                "- Use SimConnect in C++ and a DLL to pass call and pass data with functions",
+                "- Use WASM to compile C++ to JavaScript readable code"
+            ]
+        },
+        {
+            "title": "NodeJs wrapper of the SimConnect API",
+            "lines": [
+                "This would have been the easyest options here. Yes, 'would', because sadly it didn't work 😐.",
+                "Some NodeJs wrapper of SimConnect existed, but I was having some troubles to build them. I usually got an error related to a NodeJs GYP error.",
+                "So I decied to move since I didn't want to rewrite the entire wrapper."
+            ]
+        },
+        {
+            "title": "Python SimConnect wrapper then serializing the variables in a .json file",
+            "lines": [
+                "I'm not a fan of this option, I don't like this idea because you need a lot of validation to make this work.",
+                "Let's say you want to access the data from NodeJs but the file doesn't exists? Or some data is missing? Or the JSON is still being written? Or the JSON is simply invalid due to multiple writting calls.",
+                "But still, I tried. I used this Python wrapper: https://github.com/odwdinc/Python-SimConnect",
+                "Usage:",
+                "[CODE] //todo",
+                "As you can see it's really simple and straight forward compared to the native C++ SimConnect API wich requires you to use a struct, cast data etc...",
+                "Now, we need to write the data to a JSON file.",
+                "The idea behind that is to create an .exe of the final python script that take args. The arg will be the requested simvar key name.",
+                "This way I can execute the .exe with some arguments from NodeJs. Then take a look a the .json file created by the .exe."
+            ]
+        },
+        {
+            "title": "WASM to compile C++ to JavaScript readable code",
+            "lines": [
+                "First of all, what is WASM? WASM stands for WebAssembly. Here is the definition from the offial WASM org website:",
+                "//todo",
+                "Basically, WASM allows you to run code written in multiple languages on the web to perform specific heavy tasks. Instead of writing this specific task in a slower language such as JavaScript.",
+                "In my case, I initially wanted to write a C++ program to get the variables from the simulator using the C++ SimConnect API. Then compile this C++ program to a binary WASM file, then use this file in the Electron app.",
+                "Sadly, the C++ SimConnect API heavily relies on the windows.h header file",
+                "This windows.h header file is a header file from Microsoft that allows you to access Win32 API functions from C or C++.",
+                "And the issue is that the windows.h header file contains a lot of non portable functions such as for creating windows.",
+                "Those functions are Windows specific and have no representation on a web page since they aren't implemented on the web platform.",
+                "More here: https://github.com/emscripten-core/emsdk/issues/15"
+            ]
+        }
+    ]
+}
