@@ -8,7 +8,7 @@ for(let i = 0; i < posts.length; i++) {
     .then((res) => res.json())
     .then((out) => {
         let str = `
-        <section>
+        <section onclick="location.href='./post.html'">
             <img src=${out["thumbnail"]}>
             <div class="tags">
                 <h1>${out["tags"][0]}</h1>
