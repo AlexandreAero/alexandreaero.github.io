@@ -27,14 +27,14 @@ body {
     width: 124px;
 }
 
-.blog-posts {
+#blog-posts {
     transform: scale(0.8);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.blog-posts > section {
+#blog-posts > section {
     margin: auto;
     width: 380px;
     background-image: linear-gradient(to right, #e052a0, #f15b41c4)!important;
@@ -44,7 +44,7 @@ body {
     height: fit-content;
 }
 
-.blog-posts > section > img {
+#blog-posts > section > img {
     width: 150px;
     height: 150px;
 }
