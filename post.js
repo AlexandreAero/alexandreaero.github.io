@@ -27,6 +27,11 @@ fetch(url)
                 let str = `<pre><code>${lineCpy}</code></pre>`;
 
                 contentWrapper.insertAdjacentHTML("beforeend", str);
+            } else if(line.includes("[QUOTE]")){
+                let lineCpy = line.replace("[QUOTE]", "");
+                let str = `<q>${lineCpy}</q>`;
+
+                contentWrapper.insertAdjacentHTML("beforeend", str);
             } else {
                 let text = document.createElement("h3");
                 text.innerHTML = line;
