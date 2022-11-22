@@ -20,8 +20,7 @@ for(let i = 0; i < posts.length; i++) {
             <h2 id="author">${out["author"]}</h1>
             <h3 id="date">${out["date"]}</h3>
             <h3 id="description">${out["description"]}</h3>
-        </section>
-        `;
+        </section>`;
 
         const mainDiv = document.getElementById("blog-posts");
 

@@ -1,6 +1,4 @@
-let url = 'https://raw.githubusercontent.com/AlexandreAero/alexandreaero.github.io/main/posts/b.json';
-
-fetch(url)
+fetch(posts[0])
 .then((res) => res.json())
 .then((out) => {
     document.getElementById("title").innerHTML = out["title"];
@@ -13,12 +11,9 @@ fetch(url)
     let content = out["content"];
 
     for(let sectionI = 0; sectionI < Object.keys(content).length; sectionI++) {
-        let text = document.createElement("h2");
-        text.innerHTML = content[sectionI]["title"];
-        text.id = "sub-section-title";
+        let textStr = `<h2 id="sub-section-title">${content[sectionI]["title"]}</h2>`;
 
-        contentWrapper.append(text);
-
+        contentWrapper.insertAdjacentHTML("beforeend", textStr);
         for(let lineI = 0; lineI < Object.keys(content[sectionI]["lines"]).length; lineI++) {
             let line = content[sectionI]["lines"][lineI];
 
@@ -33,10 +28,9 @@ fetch(url)
 
                 contentWrapper.insertAdjacentHTML("beforeend", str);
             } else {
-                let text = document.createElement("h3");
-                text.innerHTML = line;
+                let str = `<h3>${line}</h3>`;
 
-                contentWrapper.append(text);
+                contentWrapper.insertAdjacentHTML("beforeend", str);
             }
         }
     }
