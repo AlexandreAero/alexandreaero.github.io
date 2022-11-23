@@ -1,4 +1,4 @@
-fetch(posts[0])
+fetch("https://raw.githubusercontent.com/AlexandreAero/alexandreaero.github.io/main/posts/a.json")
 .then((res) => res.json())
 .then((out) => {
     document.getElementById("title").innerHTML = out["title"];
