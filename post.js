@@ -1,4 +1,4 @@
-fetch("https://raw.githubusercontent.com/AlexandreAero/alexandreaero.github.io/main/posts/a.json")
+fetch(sessionStorage.getItem('page'))
 .then((res) => res.json())
 .then((out) => {
     document.getElementById("title").innerHTML = out["title"];

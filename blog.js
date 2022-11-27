@@ -1,6 +1,8 @@
+const baseUrl = 'https://raw.githubusercontent.com/AlexandreAero/alexandreaero.github.io/main/posts/';
+
 const posts = [
-    "https://raw.githubusercontent.com/AlexandreAero/alexandreaero.github.io/main/posts/a.json",
-    "https://raw.githubusercontent.com/AlexandreAero/alexandreaero.github.io/main/posts/b.json"
+    `${baseUrl}/a.json`,
+    `${baseUrl}/b.json`,
 ];
 
 for(let i = 0; i < posts.length; i++) {
@@ -8,7 +10,7 @@ for(let i = 0; i < posts.length; i++) {
     .then((res) => res.json())
     .then((out) => {
         let str = `
-        <section onclick="location.href='./post.html'">
+        <section onclick="location.href='./post.html'; sessionStorage.setItem('page', '${posts[i]}');">
             <img src=${out["thumbnail"]}>
             <div class="tags">
                 <h1>${out["tags"][0]}</h1>
