@@ -2,15 +2,6 @@
 const tableSeparator = '*';
 
 /**
- * Extracts the markdown table from the `out` string.
- * @param {string} out
- * @returns The extracted markdown table as a string.
- */
-function extractTable(out) {
-  return out.split(tableSeparator)[0].trim();
-}
-
-/**
  * 
  * @param {string} key 
  * @returns 
