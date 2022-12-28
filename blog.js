@@ -1,26 +1,20 @@
 const baseUrl = 'https://raw.githubusercontent.com/AlexandreAero/alexandreaero.github.io/main/posts/';
 
-const table = `
-|key|value|
-|-----------|-----------|
-|title|That time my Discord server has been raided because of a dumb mistake.|
-|author|PilotAlex|
-|date|24/09/2022|
-|description|I used to have a Discord server a little while ago with my friends, it was a private server with only 4-5 people in it. But things started to get messy when I developed a Discord bot that leaked our server secret key.|
-|tags|Discord;Server;Bot;JavaScript|
-|thumbnail|https://avatars.githubusercontent.com/u/26492485?s=200&v=4|
-`;
+// The character tha delemits the data table from the post content
+const tableSeparator = '*';
 
 // TODO: make this more "automatic"
 const posts = [
-  `${baseUrl}/0001.md`
-  `${baseUrl}/0002.md`,
+  `${baseUrl}/0001.md`,
+  `${baseUrl}/0002.md`
 ];
 
 for(let i = 0; i < posts.length; i++) {
   fetch(posts[i])
   .then((res) => res.text())
   .then((out) => {
+    const table = extractTable(out);
+
     const tags = getTableValue(table, "tags").split(";");
 
     let str = `
@@ -46,6 +40,15 @@ for(let i = 0; i < posts.length; i++) {
   .catch((err) => {
     throw err;
   });
+}
+
+/**
+ * 
+ * @param {string} out 
+ * @returns 
+ */
+function extractTable(out) {
+  return out.split("*")[0].trim();
 }
 
 /**
