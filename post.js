@@ -1,42 +1,52 @@
+const converter = new showdown.Converter();
+
+const table = `
+|key|value|
+|-----------|-----------|
+|title|That time my Discord server has been raided because of a dumb mistake.|
+|author|By Pilot Alex|
+|date|24/09/2022|
+|description|I used to have a Discord server a little while ago with my friends, it was a private server with only 4-5 people in it. But things started to get messy when I developed a Discord bot that leaked our server secret key.|
+|tags|Discord;Server;Bot;JavaScript|
+|thumbnail|https://avatars.githubusercontent.com/u/26492485?s=200&v=4|
+`;
+
 fetch(sessionStorage.getItem('page'))
-.then((res) => res.json())
+.then((res) => res.text())
 .then((out) => {
-    document.getElementById("title").innerHTML = out["title"];
-    document.getElementById("author").innerHTML = out["author"];
-    document.getElementById("date").innerHTML = out["date"];
-    document.getElementById("description").innerHTML = out["description"];
+    document.getElementById("title").innerHTML = getTableValue(table, "title");
+    document.getElementById("author").innerHTML = getTableValue(table, "author");
+    document.getElementById("date").innerHTML = getTableValue(table, "date");
+    document.getElementById("description").innerHTML = getTableValue(table, "description");
 
     let contentWrapper = document.getElementById("main-content-wrapper");
-    
-    let content = out["content"];
+    let html = converter.makeHtml(out);
 
-    for(let sectionI = 0; sectionI < Object.keys(content).length; sectionI++) {
-        let textStr = `<h2 id="sub-section-title">${content[sectionI]["title"]}</h2>`;
-
-        contentWrapper.insertAdjacentHTML("beforeend", textStr);
-        for(let lineI = 0; lineI < Object.keys(content[sectionI]["lines"]).length; lineI++) {
-            let line = content[sectionI]["lines"][lineI];
-
-            if(line.includes("[CODE]")) {
-                let lineCpy = line.replace("[CODE]", "");
-                let str = `<pre><code>${lineCpy}</code></pre>`;
-
-                contentWrapper.insertAdjacentHTML("beforeend", str);
-            } else if(line.includes("[QUOTE]")){
-                let lineCpy = line.replace("[QUOTE]", "");
-                let str = `<q>${lineCpy}</q>`;
-
-                contentWrapper.insertAdjacentHTML("beforeend", str);
-            } else {
-                let str = `<h3>${line}</h3>`;
-
-                contentWrapper.insertAdjacentHTML("beforeend", str);
-            }
-        }
-    }
+    contentWrapper.insertAdjacentHTML("beforeend", html);
 
     hljs.highlightAll();
-})
-.catch((err) => {
-    throw err 
 });
+
+/**
+ * 
+ * @param {string} key 
+ * @returns 
+ */
+function getTableValue(table, key) {
+    let result = {};
+  
+    table = table.trim();
+  
+    let split = table.split("\n");
+  
+    for(let i = 2; i < split.length; i++) {
+      let temp = split[i];
+      
+      const key = temp.split("|")[1].trim();
+      const value = temp.split("|")[2].trim();
+  
+      result[key] = value;
+    }
+  
+    return result[key];
+}

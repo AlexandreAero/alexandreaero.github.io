@@ -3,13 +3,30 @@
 h1,
 h2,
 h3,
-q {
+q,
+p,
+ul,
+li {
     font-family: 'Source Code Pro', monospace;
     color: white;
 }
 
+/* Paragraph text */
+p {
+    font-weight: 900;
+    font-size: 17px;
+    text-align: justify;
+    word-spacing: normal;
+}
+
 q {
     font-style: italic;
+}
+
+/* Subtitles */
+h2 {
+    text-align: left;
+    font-size: 25px;
 }
 
 body {
@@ -60,17 +77,6 @@ pre code {
     margin: auto;
 }
 
-#sub-section-title {
-    text-align: left;
-    font-size: 25px;
-}
-
 #main-content-wrapper {
     margin-bottom: 50px;
-}
-
-#main-content-wrapper > h3 {
-    font-size: 17px;
-    text-align: justify;
-    word-spacing: normal;
 }
