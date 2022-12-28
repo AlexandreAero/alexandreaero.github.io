@@ -17,36 +17,3 @@ fetch(sessionStorage.getItem('page'))
 
   hljs.highlightAll();
 });
-
-/**
- * 
- * @param {string} out
- * @returns 
- */
-function extractTable(out) {
-  return out.split('*')[0].trim();
-}
-
-/**
- * 
- * @param {string} key
- * @returns 
- */
-function getTableValue(table, key) {
-  let result = {};
-  
-  table = table.trim();
-  
-  let split = table.split('\n');
-  
-  for(let i = 2; i < split.length; i++) {
-    let temp = split[i];
-      
-    const key = temp.split('|')[1].trim();
-    const value = temp.split('|')[2].trim();
-  
-    result[key] = value;
-  }
-  
-  return result[key];
-}

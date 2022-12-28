@@ -1,8 +1,5 @@
 const baseUrl = 'https://raw.githubusercontent.com/AlexandreAero/alexandreaero.github.io/main/posts/';
 
-// The character tha delemits the data table from the post content
-const tableSeparator = '*';
-
 // TODO: make this more "automatic"
 const posts = [
   `${baseUrl}/0001.md`,
@@ -40,37 +37,4 @@ for(let i = 0; i < posts.length; i++) {
   .catch((err) => {
     throw err;
   });
-}
-
-/**
- * 
- * @param {string} out 
- * @returns 
- */
-function extractTable(out) {
-  return out.split("*")[0].trim();
-}
-
-/**
- * 
- * @param {string} key 
- * @returns 
- */
-function getTableValue(table, key) {
-  let result = {};
-
-  table = table.trim();
-
-  let split = table.split("\n");
-
-  for(let i = 2; i < split.length; i++) {
-    let temp = split[i];
-    
-    const key = temp.split("|")[1].trim();
-    const value = temp.split("|")[2].trim();
-
-    result[key] = value;
-  }
-
-  return result[key];
 }
