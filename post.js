@@ -1,4 +1,4 @@
-const converter = new showdown.Converter();
+const converter = new showdown.Converter({metadata: true});
 
 fetch(sessionStorage.getItem('page'))
 .then((res) => res.text())
@@ -12,8 +12,12 @@ fetch(sessionStorage.getItem('page'))
 
   let contentWrapper = document.getElementById('main-content-wrapper');
   let html = converter.makeHtml(out);
+  console.log(converter.getMetadata());
 
   contentWrapper.insertAdjacentHTML('beforeend', html);
 
   hljs.highlightAll();
+})
+.catch((err) => {
+  throw err;
 });

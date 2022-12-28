@@ -11,6 +11,12 @@ li {
     color: white;
 }
 
+/* Subtitles */
+h2 {
+    text-align: left;
+    font-size: 25px;
+}
+
 /* Paragraph text */
 p {
     font-weight: 900;
@@ -19,14 +25,12 @@ p {
     word-spacing: normal;
 }
 
-q {
-    font-style: italic;
+li {
+    font-weight: 900;
 }
 
-/* Subtitles */
-h2 {
-    text-align: left;
-    font-size: 25px;
+q {
+    font-style: italic;
 }
 
 body {

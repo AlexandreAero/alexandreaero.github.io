@@ -1,4 +1,4 @@
-// The character tha delemits the data table from the post content
+// The character that delemits the data table from the post content
 const tableSeparator = '*';
 
 /**
