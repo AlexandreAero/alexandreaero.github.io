@@ -16,6 +16,10 @@ fetch(repoContentUrl)
   loadPosts(posts);
 });
 
+/**
+ * 
+ * @param {array[string]} posts 
+ */
 function loadPosts(posts) {
   for(let i = 0; i < posts.length; i++) {
     fetch(posts[i])
