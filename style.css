@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
 
+* {
+    cursor: url("./cursor.png"), auto;
+}
+
 h1,
 h2,
 h3 {
@@ -55,7 +59,6 @@ body {
     margin-left: auto;
     margin-right: auto;
     background-image: linear-gradient(to right, #e052a0, #f15b41c4)!important;
-    cursor: pointer;
     border-radius: 22px;
     position: relative;
 }
@@ -88,7 +91,6 @@ body {
 }
 
 .blog-button {
-    cursor: pointer;
     border: 2px solid #ffffff;
     width: 140px;
     height: 55px;
