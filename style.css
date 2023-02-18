@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
 
-* {
-    cursor: url("./cursor.png"), auto;
-}
-
 h1,
 h2,
 h3 {
@@ -16,29 +12,6 @@ body {
 }
 
 .header {
-    text-align: center;
-}
-
-.text-holder {
-    margin-left: auto;
-    margin-right: auto;
-    height: fit-content;
-    width: 40%;
-    background-image: linear-gradient(to right, #e052a0, #f15c41)!important;
-    border-radius: 50px;
-    text-align: center;
-}
-
-.text {
-    font-size: 11px;
-    transform: scale(0.9);
-}
-
-.logo {
-    margin-top: 50px;
-    border-radius: 30%;
-    height: 124px;
-    width: 124px;
     position: relative;
     height: 128px;
 }
@@ -165,6 +138,7 @@ body {
 }
 
 .blog-button {
+    cursor: pointer;
     border: 2px solid #ffffff;
     width: 140px;
     height: 55px;
