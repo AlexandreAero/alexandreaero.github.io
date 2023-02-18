@@ -5,7 +5,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <link href="./style.css" rel="stylesheet">
-  <link rel="shortcut icon" href="./assets/Mandalorian.png">
+  <link href="./assets/Mandalorian.png" rel="shortcut icon">
   <script defer src="./index.js"></script>
 </head>
 <body>
@@ -22,7 +22,7 @@
     </div>
   </header>
   <div class="bio-section">
-    <div class="content">
+    <div class="bio-content">
       <h1>Who is PilotAlex?</h1>
       <h2>- I am a software developer by passion and free time based in Paris, I am currently studying mathematics and computer science.</h2>
       <h1>What's your tech stack?</h1>
@@ -32,9 +32,10 @@
       <h1>Which game would you recommend?</h1>
       <h2>- Halo Infinite, Microsoft Flight Simulator, Mafia and Tannenberg are really cool.</h2>
     </div>
+    <button class="blog-button" onclick="location.href='./blog.html'">Check my blog!</button>
   </div>
-  <h1 class="technology-text">#technologies</h1>
   <div class="tech-section">
+    <h1>#technologies</h1>
     <div class="tech-wrapper">
       <section class="hidden">
         <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg">
@@ -86,9 +87,9 @@
       </section>
     </div>
   </div>
-  <h1 class="project-text">#projects</h1>
   <div class="projects-section">
-    <div id="projects">
+    <h1>#projects</h1>
+    <div class="projects">
       <div class="hidden" onclick="location.href='https://github.com/AlexandreAero/French-Kiss'">
         <div class="image-main">
           <img src="./assets/frenchKiss.png">
@@ -172,6 +173,16 @@
           <h2>Superb ATC</h2>
           <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg">
           <h3>ATC plugin that uses AI developed for Microsoft Flight Simulator.</h3>
+        </div>
+      </div>
+      <div class="hidden" onclick="location.href='https://example.com'">
+        <div class="image-main">
+          <img src="https://user-images.githubusercontent.com/66020831/208423648-5562a49d-362d-4be4-a8b5-b11a86f7ce4d.png">
+        </div>
+        <div class="data-container">
+          <h2>Skybox Beautifier</h2>
+          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg">
+          <h3>Decompose a single skybox texture to 6 texture images for 6 faces!</h3>
         </div>
       </div>
     </div>

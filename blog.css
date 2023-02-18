@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
 
+* {
+    cursor: url("./cursor.png"), auto;
+}
+
 h1,
 h2,
 h3 {
@@ -8,8 +12,7 @@ h3 {
 }
 
 body {
-    /* #e052a090 | #eaeaea */
-    background-color: #eaeaea;
+    background-color: #C7B8EA;
 }
 
 .header {
@@ -25,6 +28,7 @@ body {
     position: relative;
     height: 124px;
     width: 124px;
+    margin-bottom: 15px;
 }
 
 #blog-posts {
@@ -37,7 +41,7 @@ body {
 #blog-posts > section {
     margin: auto;
     width: 380px;
-    background-image: linear-gradient(to right, #e052a0, #f15b41c4)!important;
+    background-color: #E9D2F4;
     cursor: pointer;
     border-radius: 22px;
     min-height: 530px;
@@ -47,6 +51,7 @@ body {
 #blog-posts > section > img {
     width: 150px;
     height: 150px;
+    border-radius: 22px 0px 0px 0px;
 }
 
 #title,
@@ -78,22 +83,33 @@ body {
 }
 
 .tags > h1 {
-    background-color: #fe645c;
+    background-color: #9a83c3;
     border-radius: 30px;
     margin-left: 10px;
     font-size: 17px;
 }
 
 .back-button {
-    margin: 0 auto;
+    background-color: #E9D2F4;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: white;
     display: block;
-    cursor: pointer;
-    margin-top: 15px;
-    border: 2px solid #ffffff;
-	width: 150px;
-    height: 65px;
-	border-radius: 15px;
-	color: #fff;
-	background-image: linear-gradient(to right, #f15b41c4, #e052a0)!important;
-    font-size: 19px;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    height: 50px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0 auto;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }

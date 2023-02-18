@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
 
+* {
+    cursor: url("./cursor.png"), auto;
+}
+
 h1,
 h2,
 h3 {
@@ -49,24 +53,21 @@ body {
     height: 48px;
 }
 
-.technology-text,
-.project-text,
+.bio-section,
 .tech-section,
-.projects-section,
-.bio-section {
-    width: 100%;
+.projects-section {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-.content {
+.bio-content {
     width: 40%;
     height: 10%;
     height: fit-content;
     border-radius: 50px;
-    font-size: 13px;
+    font-size: 11px;
     text-align: left;
-    transform: scale(0.9);
 }
 
 .tech-wrapper {
@@ -88,24 +89,23 @@ body {
     margin-bottom: 50px;
 }
 
-/* language logos */
+/* Language logos */
 .tech-wrapper > section > img {
     width: 50px;
     height: 50px;
     transform: translateY(50%);
 }
 
-/* language names */
+/* Language names */
 .tech-wrapper > section > h3 {
     transform: translateY(50%);
 }
 
-#projects > div {
+.projects > div {
     height: 240px;
     width: 700px;
     margin-bottom: 20px;
     background-color: #E9D2F4;
-    cursor: pointer;
     border-radius: 22px;
     position: relative;
 }
@@ -129,24 +129,34 @@ body {
 
 /* Style used language images */
 .data-container > img {
-    width: 48px; 
+    width: 48px;
     height: 48px;
 }
 
-#projects > div > div > h2 {
-    font-size: 32px;
-}
-
 .blog-button {
-    cursor: pointer;
-    border: 2px solid #ffffff;
-    width: 140px;
-    height: 55px;
-    border-radius: 15px;
-    color: #fff;
-    background-image: linear-gradient(to right, #f15b41c4, #e052a0)!important;
-    font-size: 19px;
-    margin-bottom: 20px;
+    background-color: #E9D2F4;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: white;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    height: 50px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
 
 .hidden {
