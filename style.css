@@ -12,8 +12,7 @@ h3 {
 }
 
 body {
-    /* #e052a090 | #eaeaea */
-    background-color: #eaeaea;
+    background-color: #C7B8EA;
 }
 
 .header {
@@ -40,25 +39,100 @@ body {
     border-radius: 30%;
     height: 124px;
     width: 124px;
+    position: relative;
+    height: 128px;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    overflow: hidden;
+    border-radius: 30%;
+    height: 80px;
+    width: 80px;
+}
+
+.name-text {
+    position: relative;
+    float: left;
+    top: 10%;
+    margin-left: 128px;
+    font-size: 35px;
 }
 
 .socials {
-    text-align: center;
-    margin-top: 20px;
+    position: relative;
+    float: right;
+    top: 40%;
+    margin-right: 15px;
+    font-size: xx-large;
 }
 
+/* scale images */
 .socials > input {
     width: 48px; 
     height: 48px;
 }
 
-.projects > div {
+.technology-text,
+.project-text,
+.tech-section,
+.projects-section,
+.bio-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    width: 40%;
+    height: 10%;
+    height: fit-content;
+    border-radius: 50px;
+    font-size: 13px;
+    text-align: left;
+    transform: scale(0.9);
+}
+
+.tech-wrapper {
+    display: grid;
+    grid-template-columns: 150px 150px 150px 150px;
+    grid-template-rows: auto;
+    box-sizing: border-box;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+.tech-wrapper > section {
+    width: 128px;
+    height: 128px;
+    background-color: #E9D2F4;
+    border-radius: 20px;
+    margin-bottom: 50px;
+}
+
+/* language logos */
+.tech-wrapper > section > img {
+    width: 50px;
+    height: 50px;
+    transform: translateY(50%);
+}
+
+/* language names */
+.tech-wrapper > section > h3 {
+    transform: translateY(50%);
+}
+
+#projects > div {
     height: 240px;
-    width: 35%;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    background-image: linear-gradient(to right, #e052a0, #f15b41c4)!important;
+    width: 700px;
+    margin-bottom: 20px;
+    background-color: #E9D2F4;
+    cursor: pointer;
     border-radius: 22px;
     position: relative;
 }
@@ -86,7 +160,7 @@ body {
     height: 48px;
 }
 
-.projects > div > div > h2 {
+#projects > div > div > h2 {
     font-size: 32px;
 }
 
@@ -99,4 +173,23 @@ body {
     background-image: linear-gradient(to right, #f15b41c4, #e052a0)!important;
     font-size: 19px;
     margin-bottom: 20px;
+}
+
+.hidden {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateX(-20%);
+    transition: all 0.5s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateX(0%);
+}
+
+@media(prefers-reduced-motion) {
+    .hidden {
+        transform: none;
+    }
 }
