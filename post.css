@@ -34,8 +34,7 @@ q {
 }
 
 body {
-    /* #e052a090 | #eaeaea */
-    background-image: linear-gradient(to right, #f15b41c4, #e052a0)!important;
+    background-color: #C7B8EA;
 }
 
 hr {
