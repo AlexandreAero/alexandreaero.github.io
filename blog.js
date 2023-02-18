@@ -1,16 +1,16 @@
-const rawPostUrl = 'https://raw.githubusercontent.com/AlexandreAero/alexandreaero.github.io/main/posts/';
-const repoContentUrl = 'https://api.github.com/repos/AlexandreAero/alexandreaero.github.io/contents/posts';
+const RAW_POST_URL = 'https://raw.githubusercontent.com/AlexandreAero/alexandreaero.github.io/main/posts/';
+const REPO_CONTENT_URL = 'https://api.github.com/repos/AlexandreAero/alexandreaero.github.io/contents/posts';
 
 const converter = new showdown.Converter({metadata: true});
 
 let posts = [];
 
-fetch(repoContentUrl)
+fetch(REPO_CONTENT_URL)
 .then((res) => res.json())
 .then((out) => {
-  for(let i = 0; i < out.length; i++) {
-    posts.push(rawPostUrl.concat(out[i]["name"]));
-  }
+  out.forEach((element) => {
+    posts.push(`${RAW_POST_URL}${element['name']}`)
+  });
 })
 .then(() => {
   loadPosts(posts);
@@ -18,7 +18,7 @@ fetch(repoContentUrl)
 
 /**
  * 
- * @param {array[string]} posts 
+ * @param {[string]} posts 
  */
 function loadPosts(posts) {
   for(let i = 0; i < posts.length; i++) {
@@ -31,7 +31,7 @@ function loadPosts(posts) {
   
       const tags = metadata['tags'].split(';');
   
-      let str = `
+      const str = `
         <section onclick="location.href='./post.html'; sessionStorage.setItem('page', '${posts[i]}');">
           <img src=${metadata['thumbnail']}>
           <div class="tags">

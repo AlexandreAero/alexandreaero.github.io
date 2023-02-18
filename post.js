@@ -3,7 +3,7 @@ const converter = new showdown.Converter({metadata: true});
 fetch(sessionStorage.getItem('page'))
 .then((res) => res.text())
 .then((out) => {
-  let html = converter.makeHtml(out);
+  const html = converter.makeHtml(out);
 
   const metadata = converter.getMetadata();
 
@@ -12,7 +12,7 @@ fetch(sessionStorage.getItem('page'))
   document.getElementById('date').innerHTML = metadata['date'];
   document.getElementById('description').innerHTML = metadata['description'];
 
-  let contentWrapper = document.getElementById('main-content-wrapper');
+  const contentWrapper = document.getElementById('main-content-wrapper');
 
   contentWrapper.insertAdjacentHTML('beforeend', html);
 
