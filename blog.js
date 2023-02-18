@@ -29,6 +29,6 @@ for(let i = 0; i < posts.length; i++) {
         mainDiv.insertAdjacentHTML("beforeend", str);
     })
     .catch((err) => {
-        throw err 
+        throw err;
     });
 }
