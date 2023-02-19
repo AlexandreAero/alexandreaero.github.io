@@ -1,85 +1,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
 
-h1,
-h2,
-h3,
-q,
-p,
-ul,
-li {
-    font-family: 'Source Code Pro', monospace;
-    color: white;
+h1, h2, h3, q, p, ul, li {
+  font-family: 'Source Code Pro', monospace;
+  color: white;
 }
 
-/* Subtitles */
 h2 {
-    text-align: left;
-    font-size: 25px;
+  text-align: left;
+  font-size: 25px;
 }
 
-/* Paragraph text */
 p {
-    font-weight: 900;
-    font-size: 17px;
-    text-align: justify;
-    word-spacing: normal;
+  font-weight: 900;
+  font-size: 17px;
+  text-align: justify;
+  word-spacing: normal;
 }
 
-li {
-    font-weight: 900;
-}
-
-q {
-    font-style: italic;
+li, q {
+  font-weight: 900;
 }
 
 body {
-    background-color: #C7B8EA;
+  background-color: #C7B8EA;
 }
 
 hr {
-    margin-top: 20px;
-    border: 0;
-    border-bottom: 8px dashed rgba(255, 255, 255, 0.3);
-    width: 90%;
-    margin-bottom: 20px;
+  margin-top: 20px auto;
+  border: none;
+  border-bottom: 8px dashed rgba(255, 255, 255, 0.3);
+  width: 90%;
 }
 
 pre code {
-    text-align: left;
+  text-align: left;
 }
 
 .header {
-    height: fit-content;
-    text-align: center;
+  height: fit-content;
+  text-align: center;
 }
 
 .logo {
-    margin-top: 15px;
-    text-align: center;
-    overflow: hidden;
-    border-radius: 30%;
-    position: relative;
-    height: 124px;
-    width: 124px;
+  margin: 15px auto 0;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 30%;
+  position: relative;
+  height: 124px;
+  width: 124px;
+}
+
+#title, #author, #date, #description, #main-content-wrapper {
+  display: block;
+  margin: auto;
+  inline-size: 70%;
+  text-align: center;
+  justify-content: center;
 }
 
 #title {
-    margin-top: 25px;
-}
-
-#title,
-#author,
-#date,
-#description,
-#main-content-wrapper {
-    inline-size: 70%;
-    justify-content: center;
-    text-align: center;
-    display: block;
-    margin: auto;
+  margin-top: 25px;
 }
 
 #main-content-wrapper {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }

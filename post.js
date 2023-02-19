@@ -7,10 +7,10 @@ fetch(sessionStorage.getItem('page'))
 
   const metadata = converter.getMetadata();
 
-  document.getElementById('title').innerHTML = metadata['title'];
-  document.getElementById('author').innerHTML = metadata['author'];
-  document.getElementById('date').innerHTML = metadata['date'];
-  document.getElementById('description').innerHTML = metadata['description'];
+  document.getElementById('title').innerHTML = metadata.title;
+  document.getElementById('author').innerHTML = metadata.author;
+  document.getElementById('date').innerHTML = metadata.date;
+  document.getElementById('description').innerHTML = metadata.description;
 
   const contentWrapper = document.getElementById('main-content-wrapper');
 
