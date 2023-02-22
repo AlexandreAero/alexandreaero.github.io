@@ -44,7 +44,7 @@ async function init() {
   } else {
     // Data needs update
     const currentYear = new Date().getFullYear();
-    const months = Array.from({ length: 12 }, (_, i) => i + 1);
+    const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
     const repoNames = await getRepositoryNames(githubUsername);
     const count = await getCommitCountsForMonths(githubUsername, repoNames, currentYear, months);
   
