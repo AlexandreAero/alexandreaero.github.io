@@ -40,14 +40,13 @@ async function init() {
     chartCfg.data.labels = Object.keys(count);
     chartCfg.data.datasets[0].data = Object.values(count);
 
-    console.log(`No data updated needed, last update was: ${sessionStorage.getItem('lastUpdateDate')}`);
+    console.log(count);
+    console.log(`No data update needed, last update was: ${sessionStorage.getItem('lastUpdateDate')}`);
   } else {
     // Data needs update
     const currentYear = new Date().getFullYear();
-    const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
-    const repoNames = await getRepositoryNames(githubUsername);
-    const count = await getCommitCountsForMonths(githubUsername, repoNames, currentYear, months);
-  
+    const count = await countCommitsForYearAndMonth(githubUsername, currentYear);
+
     sessionStorage.setItem('count', JSON.stringify(count));
     sessionStorage.setItem('lastUpdateDate', today);
   
@@ -68,49 +67,39 @@ async function init() {
  * @param {[string]} months 
  * @returns {Promise<{[string]: number}>}
  */
-async function getCommitCountsForMonths(username, repos, year, months) {
-  const apiUrlTemplate = `https://api.github.com/repos/<USERNAME>/<REPO>/commits?since=<MONTH>-01T00:00:00Z&until=<MONTH>-31T23:59:59Z`;
-  
-  const apiUrls = repos.flatMap(repo => months.map(month => apiUrlTemplate.replace(/<USERNAME>/g, username).replace(/<REPO>/g, repo).replace(/<MONTH>/g, `${year}-${month.toString().padStart(2, '0')}`)));
-  
-  const fetchPromises = apiUrls.map(async (apiUrl) => {
-    try {
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-      return data.length;
-    } catch (error) {
-      console.error(error);
-      return 0;
-    }
-  });
-  
-  const commitCounts = await Promise.all(fetchPromises);
-  const result = {};
-  
-  months.forEach((month, index) => {
-    const total = commitCounts.slice(index * repos.length, (index + 1) * repos.length).reduce((a, b) => a + b, 0);
-    result[`${year}-${month.toString().padStart(2, '0')}`] = total;
-  });
-  
-  return result;
-}
+async function countCommitsForYearAndMonth(username, year) {
+  const repos = await fetch(`https://api.github.com/users/${username}/repos`).then(res => res.json());
 
-/**
- * Retrieve the list of repositories for a GitHub user
- * @param {string} username 
- * @returns {Promise<[string]>}
- */
-async function getRepositoryNames(username) {
-  const apiUrl = `https://api.github.com/users/${username}/repos`;
-  
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    return data.map(repo => repo.name);
-  } catch (error) {
-    console.error(error);
-    return [];
+  const commitCounts = {};
+
+  // Initialize the commit counts for all months in the year to zero
+  for (let month = 1; month <= 12; month++) {
+    const monthYearString = `${year}-${month.toString().padStart(2, '0')}`;
+    commitCounts[monthYearString] = 0;
   }
+
+  for (const repo of repos) {
+    const commits = await fetch(`https://api.github.com/repos/${username}/${repo.name}/commits`).then(res => res.json());
+
+    for (const commit of commits) {
+      const commitDate = new Date(commit.commit.author.date);
+
+      if (commitDate.getFullYear() === year) {
+        const monthYearString = `${commitDate.getFullYear()}-${(commitDate.getMonth() + 1).toString().padStart(2, '0')}`;
+        commitCounts[monthYearString] += 1;
+      }
+    }
+  }
+
+  // Sort the commit counts by month
+  const sortedCommitCounts = {};
+  Object.keys(commitCounts)
+    .sort()
+    .forEach(monthYearString => {
+      sortedCommitCounts[monthYearString] = commitCounts[monthYearString];
+    });
+
+  return sortedCommitCounts;
 }
 
 init();
