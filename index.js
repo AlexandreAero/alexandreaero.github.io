@@ -14,9 +14,9 @@ hiddenElements.forEach((elm) => observer.observe(elm));
 
 // Chart implementation
 const year = new Date().getFullYear();
-const formattedMonths = Array.from({length: 12}, (_, i) => `${year}-${i+1}`);
+const months = Array.from({length: 12}, (_, i) => i + 1);
 
-getCommitCountsForMonths('AlexandreAero', 'alexandreaero.github.io', formattedMonths)
+getCommitCountsForMonths('AlexandreAero', ['alexandreaero.github.io'], year, months)
   .then((count) => {
     const ctx = document.getElementById('github-profile-stats');
     const cfg = {
@@ -37,17 +37,18 @@ getCommitCountsForMonths('AlexandreAero', 'alexandreaero.github.io', formattedMo
   });
 
 /**
- * Retrieve the commit counts for a GitHub repository
+ * Retrieve the total commit counts for all GitHub repositories
  * for each month in a given year
  * @param {string} username 
- * @param {string} repo 
+ * @param {[string]} repos 
+ * @param {number} year 
  * @param {[string]} months 
- * @returns 
+ * @returns {Promise<{[string]: number}>}
  */
-function getCommitCountsForMonths(username, repo, months) {
-  const apiUrlTemplate = `https://api.github.com/repos/${username}/${repo}/commits?since=<MONTH>-01T00:00:00Z&until=<MONTH>-31T23:59:59Z`;
+function getCommitCountsForMonths(username, repos, year, months) {
+  const apiUrlTemplate = `https://api.github.com/repos/<USERNAME>/<REPO>/commits?since=<MONTH>-01T00:00:00Z&until=<MONTH>-31T23:59:59Z`;
   
-  const apiUrls = months.map(month => apiUrlTemplate.replace(/<MONTH>/g, month));
+  const apiUrls = repos.flatMap(repo => months.map(month => apiUrlTemplate.replace(/<USERNAME>/g, username).replace(/<REPO>/g, repo).replace(/<MONTH>/g, `${year}-${month.toString().padStart(2, '0')}`)));
   
   const fetchPromises = apiUrls.map(apiUrl => fetch(apiUrl)
     .then(response => response.json())
@@ -62,7 +63,8 @@ function getCommitCountsForMonths(username, repo, months) {
     .then(commitCounts => {
       const result = {};
       months.forEach((month, index) => {
-        result[month] = commitCounts[index];
+        const total = commitCounts.slice(index * repos.length, (index + 1) * repos.length).reduce((a, b) => a + b, 0);
+        result[`${year}-${month.toString().padStart(2, '0')}`] = total;
       });
       return result;
     });
