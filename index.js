@@ -33,25 +33,11 @@ hiddenElements.forEach((elm) => observer.observe(elm));
  * Inits the index page.
  */
 async function init() {
-  if (sessionStorage.getItem('lastUpdateDate') === today) {
-    // Get from cache
-    const count = JSON.parse(sessionStorage.getItem('count'));
-      
-    chartCfg.data.labels = Object.keys(count);
-    chartCfg.data.datasets[0].data = Object.values(count);
+  const currentYear = new Date().getFullYear();
+  const count = await countCommitsForYearAndMonth(githubUsername, currentYear);
 
-    console.log(count);
-    console.log(`No data update needed, last update was: ${sessionStorage.getItem('lastUpdateDate')}`);
-  } else {
-    // Data needs update
-    const currentYear = new Date().getFullYear();
-    const count = await countCommitsForYearAndMonth(githubUsername, currentYear);
-
-    sessionStorage.setItem('count', JSON.stringify(count));
-    sessionStorage.setItem('lastUpdateDate', today);
-  
-    console.log("Updated data now");
-  }
+  chartCfg.data.labels = Object.keys(count);
+  chartCfg.data.datasets[0].data = Object.values(count);
   
   const ctx = document.getElementById('github-profile-stats');
   
@@ -61,13 +47,24 @@ async function init() {
 /**
  * Retrieve the total commit counts for all GitHub repositories
  * for each month in a given year
- * @param {string} username 
- * @param {[string]} repos 
- * @param {number} year 
- * @param {[string]} months 
+ * @param {string} username
+ * @param {number} year
  * @returns {Promise<{[string]: number}>}
  */
 async function countCommitsForYearAndMonth(username, year) {
+  // Check the cache
+  const cacheKey = `${username}-${year}-data`;
+  const cacheData = localStorage.getItem(cacheKey);
+  const cacheDate = localStorage.getItem(`${cacheKey}-date`);
+  const oneDayMs = 24 * 60 * 60 * 1000;
+
+  if (cacheData && cacheDate && Date.now() - new Date(cacheDate) < oneDayMs) {
+    console.log(`Returning cached data for ${username} ${year}`);
+    return JSON.parse(cacheData);
+  }
+
+  console.log(`Fetching and updating new data for ${username} ${year}`);
+
   const repos = await fetch(`https://api.github.com/users/${username}/repos`).then(res => res.json());
 
   const commitCounts = {};
@@ -98,6 +95,10 @@ async function countCommitsForYearAndMonth(username, year) {
     .forEach(monthYearString => {
       sortedCommitCounts[monthYearString] = commitCounts[monthYearString];
     });
+
+  // Store the data in the cache
+  localStorage.setItem(cacheKey, JSON.stringify(sortedCommitCounts));
+  localStorage.setItem(`${cacheKey}-date`, new Date());
 
   return sortedCommitCounts;
 }
