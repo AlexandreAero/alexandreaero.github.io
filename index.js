@@ -59,6 +59,7 @@ async function countCommitsForYearAndMonth(username, year) {
   const oneDayMs = 24 * 60 * 60 * 1000;
 
   if (cacheData && cacheDate && Date.now() - new Date(cacheDate) < oneDayMs) {
+    console.log(`No data update needed, last update was: ${cacheDate}`);
     console.log(`Returning cached data for ${username} ${year}`);
     return JSON.parse(cacheData);
   }
