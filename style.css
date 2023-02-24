@@ -15,7 +15,7 @@ body {
   background-color: #C7B8EA;
 }
 
-.header {
+header {
   position: relative;
   height: 128px;
 }
@@ -44,7 +44,6 @@ body {
   float: right;
   top: 40%;
   margin-right: 15px;
-  font-size: xx-large;
 }
 
 .socials > input {
@@ -60,11 +59,9 @@ body {
   align-items: center;
 }
 
-.bio-content {
+.bio-text-content {
   width: 40%;
-  height: 10%;
   height: fit-content;
-  border-radius: 50px;
   font-size: 11px;
   text-align: left;
 }
@@ -105,22 +102,21 @@ body {
   background-color: #E9D2F4;
   border-radius: 22px;
   position: relative;
+  display: flex;
 }
 
-.data-container {
-  word-wrap: break-word;
-  position: absolute;
-  top: -11px;
-  left: 235px;
-}
-
-.image-main > img {
-  float: left;
-  margin-top: 18px;
-  margin-left: 18px;
+.projects > div >img {
   width: 200px;
   height: 200px;
   border-radius: 20px;
+  transform: translate(10%, 10%);
+}
+
+.data-container {
+  text-align: left;
+  position: relative;
+  margin-left: 50px;
+  width: 380px;
 }
 
 .data-container > img {
@@ -178,5 +174,18 @@ body {
 @media(prefers-reduced-motion) {
   .hidden {
     transform: none;
+  }
+}
+
+@media only screen and (max-width:700px) {
+  body {
+    min-width: fit-content;
+  }
+
+  .bio-text-content {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 13px;
+    text-align: left;
   }
 }
