@@ -12,6 +12,21 @@ const chartCfg = {
   }
 };
 
+const tnsCfg = {
+  container: ".projects-carousel",
+  items: 1,
+  center: true,
+  autoplayButtonOutput: false,
+  loop: false,
+  rewind: true,
+  fixedWidth: 400,
+  swipeAngle: false,
+  speed: 400,
+  autoplay: true,
+  controls: false,
+  autoplayTimeout: 2000,
+};
+
 const githubUsername = 'AlexandreAero';
 const today = new Date().toLocaleDateString();
 
@@ -42,6 +57,8 @@ async function init() {
   const ctx = document.getElementById('github-profile-stats');
   
   new Chart(ctx, chartCfg);
+
+  tns(tnsCfg);
 }
 
 /**
