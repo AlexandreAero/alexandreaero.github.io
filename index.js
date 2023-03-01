@@ -8,7 +8,9 @@ const chartCfg = {
       borderWidth: 3,
       borderColor: 'rgb(255, 255, 255)',
       lineTension: 0.2,
-      pointRadius: 0
+      pointRadius: 0,
+      fill: 'stack',
+      backgroundColor: 'rgba(255, 255, 255, 0.35)'
     }]
   }
 };
