@@ -8,6 +8,7 @@ const chartCfg = {
       borderWidth: 3,
       borderColor: 'rgb(255, 255, 255)',
       lineTension: 0.2,
+      pointRadius: 0
     }]
   }
 };
@@ -15,7 +16,6 @@ const chartCfg = {
 const tnsCfg = {
   container: ".projects-carousel",
   items: 1,
-  center: true,
   autoplayButtonOutput: false,
   loop: false,
   rewind: true,
@@ -54,7 +54,7 @@ async function init() {
   chartCfg.data.labels = Object.keys(count);
   chartCfg.data.datasets[0].data = Object.values(count);
   
-  const ctx = document.getElementById('github-profile-stats');
+  const ctx = document.getElementById('github-commits-graph');
   
   new Chart(ctx, chartCfg);
 

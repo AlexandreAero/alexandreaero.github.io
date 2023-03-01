@@ -4,7 +4,9 @@
   cursor: url("./assets/cursor.png"), auto;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: 'Source Code Pro', monospace;
   color: white;
 }
@@ -51,7 +53,10 @@ body {
   border-radius: 22px 0px 0px 0px;
 }
 
-#title, #author, #date, #description {
+#title, 
+#author, 
+#date, 
+#description {
   text-align: center;
 }
 
