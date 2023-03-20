@@ -196,7 +196,7 @@ hr {
     var(--violet),
     var(--purple)
   );
-  width: 140px;
+  width: 160px;
   height: 48px;
   text-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
   border-radius: 9999px;
@@ -204,8 +204,8 @@ hr {
   border-color: transparent;
   font-family: var(--font);
   color: white;
-  font-weight: bolder;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 15px;
   transition: all 0.2s ease-in-out;
 }
 
@@ -332,6 +332,7 @@ hr {
 
 .projects-section {
   margin-top: 64px;
+  margin-bottom: 64px;
 }
 
 .projects-section > h2 {
@@ -378,58 +379,6 @@ hr {
 
 .data-container > h3 {
   font-weight: 100;
-}
-
-.code-section {
-  box-shadow: 0px 0px 100px rgb(132 31 162 / 12%);
-  background: linear-gradient(
-    90deg, 
-    rgba(132, 31, 162, 0.08) 0%, 
-    rgba(224, 82, 160, 0.08) 100%
-  );
-  margin-top: 64px;
-}
-
-.code-section > h2 {
-  text-align: center;
-}
-
-.code-grid {
-  display: grid;
-  justify-content: space-between;
-  gap: 50px;
-}
-
-.code-sample-image {
-  margin-left: 300px;
-  height: 250px;
-  width: 750px;
-  grid-column: 1;
-  grid-row: 1;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 64px;
-}
-
-.code-related-text {
-  margin-right: 300px;
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.code-related-text > h1 {
-  font-size: 28px;
-}
-
-.code-related-text > h2 {
-  font-size: 19px;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.code-related-text > h1 > img {
-  height: 32px;
-  width: 32px;
-  fill: white;
 }
 
 .logo-nav-footer > img {
