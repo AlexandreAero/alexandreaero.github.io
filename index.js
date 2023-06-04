@@ -1,3 +1,89 @@
+/******************* Shooting stars easter egg *******************/
+let enteredChars = '';
+
+document.addEventListener('keydown', (event) => {
+  const keyChar = event.key;
+  enteredChars += keyChar;
+});
+
+/****************** Star spawning and animation ******************/
+const container = document.getElementById('shooting-stars-container');
+const maxStars = 5;
+
+let spawnIntervalMs = 3000;
+let activeStars = [];
+let interval = setInterval(generateStars, spawnIntervalMs);
+
+function generateStars() {
+  clearInterval(interval);
+  enteredChars = enteredChars.toLowerCase();
+
+  if (enteredChars.includes('pilot')) {
+    spawnIntervalMs = 200;
+    enteredChars = '';
+  } else if (enteredChars.includes('alex')) {
+    spawnIntervalMs = 3000;
+    enteredChars = '';
+  }
+
+  interval = setInterval(generateStars, spawnIntervalMs);
+
+  const star = spawnStar();
+  container.append(star);
+  activeStars.push(star);
+
+  // Remove the oldest star if the maximum limit is reached
+  if (activeStars.length > maxStars) {
+    const oldestStar = activeStars.shift();
+    container.removeChild(oldestStar);
+  }
+}
+
+function spawnStar() {
+  const star = document.createElement('div');
+  star.className = 'shooting-star';
+
+  const randomX = Math.random() * (container.offsetWidth - star.offsetWidth);
+  const randomY = Math.random() * (container.offsetHeight - star.offsetHeight);
+
+  star.style.left = randomX + 'px';
+  star.style.top = randomY + 'px';
+
+  return star;
+}
+
+/**************** Handle hide and show animations ****************/
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    } else {
+      entry.target.classList.remove('show');
+    }
+  });
+});
+
+const hiddenElements = document.querySelectorAll('.hidden');
+hiddenElements.forEach((elm) => observer.observe(elm));
+
+/************************** TNS carousel **************************/
+const tnsCfg = {
+  container: '.projects-carousel',
+  items: 1,
+  autoplayButtonOutput: false,
+  loop: false,
+  rewind: true,
+  fixedWidth: 400,
+  swipeAngle: false,
+  speed: 400,
+  autoplay: true,
+  controls: false,
+  autoplayTimeout: 2000,
+};
+
+tns(tnsCfg);
+
+/************************** Commit chart **************************/
 const chartCfg = {
   type: 'line',
   data: {
@@ -15,59 +101,23 @@ const chartCfg = {
   }
 };
 
-const tnsCfg = {
-  container: ".projects-carousel",
-  items: 1,
-  autoplayButtonOutput: false,
-  loop: false,
-  rewind: true,
-  fixedWidth: 400,
-  swipeAngle: false,
-  speed: 400,
-  autoplay: true,
-  controls: false,
-  autoplayTimeout: 2000,
-};
-
 const githubUsername = 'AlexandreAero';
-const today = new Date().toLocaleDateString();
+const currentYear = new Date().getFullYear();
 
-// Handle hide and show animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if(entry.isIntersecting) {
-      entry.target.classList.add('show');
-    } else {
-      entry.target.classList.remove('show');
-    }
-  });
-});
-
-const hiddenElements = document.querySelectorAll('.hidden');
-hiddenElements.forEach((elm) => observer.observe(elm));
-
-/**
- * Inits the index page.
- */
-async function init() {
-  const currentYear = new Date().getFullYear();
-  const count = await countCommitsForYearAndMonth(githubUsername, currentYear);
-
+countCommitsForYearAndMonth(githubUsername, currentYear).then((count) => {
   chartCfg.data.labels = Object.keys(count);
   chartCfg.data.datasets[0].data = Object.values(count);
   
   const ctx = document.getElementById('github-commits-graph');
   
   new Chart(ctx, chartCfg);
-
-  tns(tnsCfg);
-}
+});
 
 /**
  * Retrieve the total commit counts for all GitHub repositories
  * for each month in a given year
- * @param {string} username
- * @param {number} year
+ * @param {String} username
+ * @param {Number} year
  * @returns {Promise<{[string]: number}>}
  */
 async function countCommitsForYearAndMonth(username, year) {
@@ -122,5 +172,3 @@ async function countCommitsForYearAndMonth(username, year) {
 
   return sortedCommitCounts;
 }
-
-init();
