@@ -1,117 +1,149 @@
-/******************* Shooting stars easter egg *******************/
-let enteredChars = '';
+/**
+ * Setups the shooting star easter egg.
+ */
+function setupShootingStarsEasterEgg() {
+  const container  = document.getElementById('shooting-stars-container');
+  const MAX_STARS  = 10;   // We recycle 10 stars at max
+  const MS         = 100 ; // Spawn a star every 100ms
+  let activeStars  = [];   // Keep track of our active stars
 
-document.addEventListener('keydown', (event) => {
-  const keyChar = event.key;
-  enteredChars += keyChar;
-});
+  let interval     = null;
+  let enteredChars = '';
 
-/****************** Star spawning and animation ******************/
-const container = document.getElementById('shooting-stars-container');
-const maxStars = 5;
+  document.addEventListener('keydown', (event) => {
+    const keyChar = event.key;
+    enteredChars += keyChar;
 
-let spawnIntervalMs = 3000;
-let activeStars = [];
-let interval = setInterval(generateStars, spawnIntervalMs);
+    if (enteredChars.includes('pilotalex')) {
+      clearInterval(interval);
+      interval = setInterval(() => {
+        generateStars(MAX_STARS, activeStars, container);
+      }, MS);
+    }
 
-function generateStars() {
-  clearInterval(interval);
-  enteredChars = enteredChars.toLowerCase();
+    setTimeout(() => {
+      clearInterval(interval);
+    }, 10000);
+  });
+}
 
-  if (enteredChars.includes('pilot')) {
-    spawnIntervalMs = 200;
-    enteredChars = '';
-  } else if (enteredChars.includes('alex')) {
-    spawnIntervalMs = 3000;
-    enteredChars = '';
+/**
+ * Represents an easter egg star.
+ */
+class star {
+  constructor(parentContainerDiv) {
+    this.container = parentContainerDiv;
+    this.dom = document.createElement('div');
   }
 
-  interval = setInterval(generateStars, spawnIntervalMs);
+  /**
+   * Visually spawns the star with a random positon.
+   */
+  spawn() {
+    const randomX = Math.random() * (this.container.offsetWidth - this.dom.offsetWidth);
+    const randomY = Math.random() * (this.container.offsetHeight - this.dom.offsetHeight);
 
-  const star = spawnStar();
-  container.append(star);
-  activeStars.push(star);
+    this.dom.className = 'shooting-star';
+
+    this.dom.style.left = randomX + 'px';
+    this.dom.style.top = randomY + 'px';
+
+    this.container.append(this.dom);
+  }
+}
+
+/**
+ * Helper function to create and spawn ``count`` stars and
+ * populates the ``activeStars`` array.
+ * @param {Number} count 
+ * @param {Array} activeStars 
+ * @param {DOM Element} container 
+ */
+function generateStars(count, activeStars, container) {
+  const spawnStar = new star(container);
+  spawnStar.spawn();
+
+  activeStars.push(spawnStar.dom);
 
   // Remove the oldest star if the maximum limit is reached
-  if (activeStars.length > maxStars) {
+  if (activeStars.length > count) {
     const oldestStar = activeStars.shift();
-    container.removeChild(oldestStar);
+    oldestStar.remove();
   }
 }
 
-function spawnStar() {
-  const star = document.createElement('div');
-  star.className = 'shooting-star';
-
-  const randomX = Math.random() * (container.offsetWidth - star.offsetWidth);
-  const randomY = Math.random() * (container.offsetHeight - star.offsetHeight);
-
-  star.style.left = randomX + 'px';
-  star.style.top = randomY + 'px';
-
-  return star;
-}
-
-/**************** Handle hide and show animations ****************/
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    } else {
-      entry.target.classList.remove('show');
-    }
+/**
+ * Handles the show hide animations for the thechnologie cards.
+ */
+function showHideAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      } else {
+        entry.target.classList.remove('show');
+      }
+    });
   });
-});
 
-const hiddenElements = document.querySelectorAll('.hidden');
-hiddenElements.forEach((elm) => observer.observe(elm));
+  const hiddenElements = document.querySelectorAll('.hidden');
+  hiddenElements.forEach((elm) => observer.observe(elm));
+}
 
-/************************** TNS carousel **************************/
-const tnsCfg = {
-  container: '.projects-carousel',
-  items: 1,
-  autoplayButtonOutput: false,
-  loop: false,
-  rewind: true,
-  fixedWidth: 400,
-  swipeAngle: false,
-  speed: 400,
-  autoplay: true,
-  controls: false,
-  autoplayTimeout: 2000,
-};
-
-tns(tnsCfg);
-
-/************************** Commit chart **************************/
-const chartCfg = {
-  type: 'line',
-  data: {
-    labels: undefined,
-    datasets: [{
-      label: 'Total commit count this year.',
-      data: undefined,
-      borderWidth: 3,
-      borderColor: 'rgb(255, 255, 255)',
-      lineTension: 0.2,
-      pointRadius: 0,
-      fill: 'stack',
-      backgroundColor: 'rgba(255, 255, 255, 0.35)'
-    }]
-  }
-};
-
-const githubUsername = 'AlexandreAero';
-const currentYear = new Date().getFullYear();
-
-countCommitsForYearAndMonth(githubUsername, currentYear).then((count) => {
-  chartCfg.data.labels = Object.keys(count);
-  chartCfg.data.datasets[0].data = Object.values(count);
+/**
+ * Creates the project section carousel with TNS.
+ */
+function createProjectCarousel() {
+  const tnsCfg = {
+    container: '.projects-carousel',
+    items: 1,
+    autoplayButtonOutput: false,
+    loop: false,
+    rewind: true,
+    fixedWidth: 400,
+    swipeAngle: false,
+    speed: 400,
+    autoplay: true,
+    controls: false,
+    autoplayTimeout: 2000,
+  };
   
-  const ctx = document.getElementById('github-commits-graph');
+  tns(tnsCfg);
+}
+
+/**
+ * Creates the github commit chart.
+ */
+function createCommitChart() {
+  const chartCfg = {
+    type: 'line',
+    data: {
+      labels: undefined,
+      datasets: [{
+        label: 'Total commit count this year.',
+        data: undefined,
+        borderWidth: 3,
+        borderColor: 'rgb(255, 255, 255)',
+        lineTension: 0.2,
+        pointRadius: 0,
+        fill: 'stack',
+        backgroundColor: 'rgba(255, 255, 255, 0.35)'
+      }]
+    }
+  };
   
-  new Chart(ctx, chartCfg);
-});
+  const githubUsername = 'AlexandreAero';
+  const currentYear = new Date().getFullYear();
+  
+  countCommitsForYearAndMonth(githubUsername, currentYear).then((count) => {
+    chartCfg.data.labels = Object.keys(count);
+    chartCfg.data.datasets[0].data = Object.values(count);
+    
+    const ctx = document.getElementById('github-commits-graph');
+    
+    new Chart(ctx, chartCfg);
+  });
+}
 
 /**
  * Retrieve the total commit counts for all GitHub repositories
@@ -172,3 +204,8 @@ async function countCommitsForYearAndMonth(username, year) {
 
   return sortedCommitCounts;
 }
+
+setupShootingStarsEasterEgg();
+showHideAnimations();
+createProjectCarousel();
+createCommitChart();
