@@ -5,8 +5,8 @@ function setupShootingStarsEasterEgg() {
   const container  = document.getElementById('shooting-stars-container');
   const MAX_STARS  = 10;   // We recycle 10 stars at max
   const MS         = 100 ; // Spawn a star every 100ms
+  
   let activeStars  = [];   // Keep track of our active stars
-
   let interval     = null;
   let enteredChars = '';
 
