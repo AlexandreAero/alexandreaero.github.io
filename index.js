@@ -15,6 +15,7 @@ function setupShootingStarsEasterEgg() {
     enteredChars += keyChar;
 
     if (enteredChars.includes('pilotalex')) {
+      enteredChars = '';
       clearInterval(interval);
       interval = setInterval(() => {
         generateStars(MAX_STARS, activeStars, container);
