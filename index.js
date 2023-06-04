@@ -1,4 +1,29 @@
 /**
+ * Represents an easter egg star.
+ */
+class star {
+  constructor(parentContainerDiv) {
+    this.container = parentContainerDiv;
+    this.dom = document.createElement('div');
+  }
+
+  /**
+   * Visually spawns the star with a random positon.
+   */
+  spawn() {
+    const randomX = Math.random() * (this.container.offsetWidth - this.dom.offsetWidth);
+    const randomY = Math.random() * (this.container.offsetHeight - this.dom.offsetHeight);
+
+    this.dom.className = 'shooting-star';
+
+    this.dom.style.left = randomX + 'px';
+    this.dom.style.top = randomY + 'px';
+
+    this.container.append(this.dom);
+  }
+}
+
+/**
  * Setups the shooting star easter egg.
  */
 function setupShootingStarsEasterEgg() {
@@ -26,31 +51,6 @@ function setupShootingStarsEasterEgg() {
       clearInterval(interval);
     }, 10000);
   });
-}
-
-/**
- * Represents an easter egg star.
- */
-class star {
-  constructor(parentContainerDiv) {
-    this.container = parentContainerDiv;
-    this.dom = document.createElement('div');
-  }
-
-  /**
-   * Visually spawns the star with a random positon.
-   */
-  spawn() {
-    const randomX = Math.random() * (this.container.offsetWidth - this.dom.offsetWidth);
-    const randomY = Math.random() * (this.container.offsetHeight - this.dom.offsetHeight);
-
-    this.dom.className = 'shooting-star';
-
-    this.dom.style.left = randomX + 'px';
-    this.dom.style.top = randomY + 'px';
-
-    this.container.append(this.dom);
-  }
 }
 
 /**
