@@ -8,7 +8,7 @@ class star {
   }
 
   /**
-   * Visually spawns the star with a random positon.
+   * Visually spawns the star with a random position.
    */
   spawn() {
     const randomX = Math.random() * (this.container.offsetWidth - this.dom.offsetWidth);
@@ -27,12 +27,12 @@ class star {
  * Setups the shooting star easter egg.
  */
 function setupShootingStarsEasterEgg() {
-  const container  = document.getElementById('shooting-stars-container');
-  const MAX_STARS  = 10;   // We recycle 10 stars at max
-  const MS         = 100 ; // Spawn a star every 100ms
+  const container = document.getElementById('shooting-stars-container');
+  const spawnIntervalMs = 100;
+  const maxStars = 10;
   
-  let activeStars  = [];   // Keep track of our active stars
-  let interval     = null;
+  let activeStars = []; // Keep track of our active stars
+  let interval = null;
   let enteredChars = '';
 
   document.addEventListener('keydown', (event) => {
@@ -43,8 +43,8 @@ function setupShootingStarsEasterEgg() {
       enteredChars = '';
       clearInterval(interval);
       interval = setInterval(() => {
-        generateStars(MAX_STARS, activeStars, container);
-      }, MS);
+        generateStars(maxStars, activeStars, container);
+      }, spawnIntervalMs);
     }
 
     setTimeout(() => {
@@ -74,7 +74,7 @@ function generateStars(count, activeStars, container) {
 }
 
 /**
- * Handles the show hide animations for the thechnologie cards.
+ * Handles the show hide animations for the technology cards.
  */
 function showHideAnimations() {
   const observer = new IntersectionObserver((entries) => {
@@ -113,7 +113,7 @@ function createProjectCarousel() {
 }
 
 /**
- * Creates the github commit chart.
+ * Creates the GitHub commit chart.
  */
 function createCommitChart() {
   const chartCfg = {
