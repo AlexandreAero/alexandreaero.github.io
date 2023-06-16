@@ -7,8 +7,6 @@
   --stars-yellow: rgb(255, 200, 61);
   --font: 'Rubik', sans-serif;
   --cursor: url("./assets/cursor.png"), auto;
-  --white: white;
-  --black: black;
 }
 
 * {
@@ -19,7 +17,7 @@ h1,
 h2,
 h3 {
   font-family: var(--font);
-  color: var(--white);
+  color: white;
 }
 
 h1 {
