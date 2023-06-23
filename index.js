@@ -116,19 +116,24 @@ function createProjectCarousel() {
  * Creates the GitHub commit chart.
  */
 function createCommitChart() {
+  const ctx = document.getElementById('github-commits-graph').getContext('2d');
+  const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+  gradient.addColorStop(0, 'rgba(115, 110, 250, 0.5)');  // Start color
+  gradient.addColorStop(1, 'rgba(0, 0, 0, 1)');    // End color
+
   const chartCfg = {
     type: 'line',
     data: {
       labels: undefined,
       datasets: [{
+        fill: 'origin',
         label: 'Total commit count this year.',
         data: undefined,
-        borderWidth: 3,
-        borderColor: 'rgb(255, 255, 255)',
-        lineTension: 0.2,
+        borderWidth: 2.5,
+        borderColor: 'rgb(115, 110, 250)',
+        lineTension: 0.35,
         pointRadius: 0,
-        fill: 'stack',
-        backgroundColor: 'rgba(255, 255, 255, 0.35)'
+        backgroundColor: gradient,
       }]
     }
   };
