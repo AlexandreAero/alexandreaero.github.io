@@ -265,8 +265,13 @@ hr {
   margin-top: 130px;
 }
 
-.github-stats-section > h2 {
+.github-stats-section > h2:not(.last-text) {
   text-align: center;
+}
+
+.last-text {
+  text-align: center;
+  margin-bottom: 110px;
 }
 
 .github-grid {
@@ -318,7 +323,7 @@ hr {
   align-items: center;
 }
 
-.tech-section > h2 {
+.tech-section > h2:not(.last-text) {
   text-align: center;
 }
 
@@ -372,7 +377,7 @@ hr {
   margin-bottom: 64px;
 }
 
-.projects-section > h2 {
+.projects-section > h2:not(.last-text) {
   text-align: center;
 }
 
