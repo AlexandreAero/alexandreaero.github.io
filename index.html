@@ -30,8 +30,8 @@
     </div>
     <div class="review-grid">
       <section class="first-review">
-        <img class="profile-picture-username-1" src="./assets/shark.png" width="64" height="64">
-        <h3 class="username-1">fezapt</h3>
+        <img class="review-profile-picture" src="./assets/shark.png" width="64" height="64">
+        <h3 class="review-username">fezapt</h3>
         <div class="stars">
           <img src="./assets/star.svg">
           <img src="./assets/star.svg">
@@ -39,11 +39,11 @@
           <img src="./assets/star.svg">
           <img src="./assets/star.svg">
         </div>
-        <h3 class="username-1">Very nice tool!</h3>
+        <h3 class="review-username">Very nice tool!</h3>
       </section>
       <section class="second-review">
-        <img class="profile-picture-username-2" src="./assets/panda.png" width="64" height="64">
-        <h3 class="username-2">Broadcaneve9</h3>
+        <img class="review-profile-picture" src="./assets/panda.png" width="64" height="64">
+        <h3 class="review-username">Broadcaneve9</h3>
         <div class="stars">
           <img src="./assets/star.svg">
           <img src="./assets/star.svg">
@@ -51,7 +51,7 @@
           <img src="./assets/star.svg">
           <img src="./assets/half-star.svg">
         </div>
-        <h3 class="username-2">Super useful</h3>
+        <h3 class="review-username">Super useful</h3>
       </section>
       <h1 class="intro-text-1">Delivering <span class="magic-text">quality</span> softwares</h1>
       <h1 class="intro-text-2">without any delay <span class="magic-text">since 2020</span></h1>
@@ -98,61 +98,53 @@
     <h2>Always enjoying to learn <span class="magic-text">new</span> technologies</h2>
     <h2>from low level languages to <span class="magic-text">high performance</span> frameworks</h2>
     <div class="tech-grid">
-      <section class="hidden">
+      <section class="hidden-language">
         <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg">
         <h3>C#</h3>
       </section>
-      <section class="hidden">
+      <section class="hidden-language">
         <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg">
         <h3>C++</h3>
       </section>
-      <section class="hidden">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg">
-        <h3>JavaScript</h3>
-      </section>
-      <section class="hidden">
+      <section class="hidden-language">
         <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg">
         <h3>C</h3>
       </section>
-      <section class="hidden">
-        <img src="https://vcpkg.io/assets/mark/mark.svg">
-        <h3>vcpkg</h3>
-      </section>
-      <section class="hidden">
+      <section class="hidden-language">
         <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg">
         <h3>Python</h3>
       </section>
-      <section class="hidden">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg">
-        <h3>NodeJs</h3>
+      <section class="hidden-language">
+        <img src="https://vcpkg.io/assets/mark/mark.svg">
+        <h3>vcpkg</h3>
       </section>
-      <section class="hidden">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
-        <h3>Html</h3>
-      </section>
-      <section class="hidden">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/unity/unity-original.svg">
-        <h3>Unity</h3>
-      </section>
-      <section class="hidden">
+      <section class="hidden-language">
         <img src="https://pypi.org/static/images/logo-small.2a411bc6.svg">
         <h3>pip</h3>
       </section>
-      <section class="hidden">
+      <section class="hidden-language">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg">
+        <h3>JavaScript</h3>
+      </section>
+      <section class="hidden-language">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+        <h3>Html</h3>
+      </section>
+      <section class="hidden-language">
         <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
         <h3>CSS</h3>
       </section>
-      <section class="hidden">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/electron/electron-original.svg">
-        <h3>Electron</h3>
+      <section class="hidden-language">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg">
+        <h3>NodeJs</h3>
       </section>
-      <section class="hidden">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/blender/blender-original.svg">
-        <h3>Blender</h3>
-      </section>
-      <section class="hidden">
+      <section class="hidden-language">
         <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg">
         <h3>Golang</h3>
+      </section>
+      <section class="hidden-language">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/npm/npm-original-wordmark.svg">
+        <h3>npm</h3>
       </section>
     </div>
   </div>
@@ -160,9 +152,9 @@
     <h2>Already <span class="magic-text">many</span> completed projects</h2>
     <h2>and even <span class="magic-text">more</span> in development</h2>
     <div class="projects-carousel">
-      <div class="hidden" onclick="location.href='https://github.com/AlexandreAero/Among-Us-Web-Animations'">
+      <div class="hidden-project" onclick="location.href='https://github.com/AlexandreAero/Among-Us-Web-Animations'">
         <img src="https://user-images.githubusercontent.com/66020831/113479556-1563de00-9490-11eb-92fe-ac680ecac059.png">
-        <div class="data-container">
+        <div class="project-data-container">
           <h2>Among-Us-Web-Animations</h2>
           <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg">
           <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
@@ -170,9 +162,9 @@
           <h3>Some little Among Us "easter egg" animations to add to your webiste.</h3>
         </div>
       </div>
-      <div class="hidden" onclick="location.href='https://github.com/AlexandreAero/alexandreaero.github.io'">
+      <div class="hidden-project" onclick="location.href='https://github.com/AlexandreAero/alexandreaero.github.io'">
         <img src="./assets/Mandalorian.png">
-        <div class="data-container">
+        <div class="project-data-container">
           <h2>PilotAlex's website</h2>
           <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg">
           <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
@@ -180,50 +172,50 @@
           <h3>The website you're visiting.</h3>
         </div>
       </div>
-      <div class="hidden" onclick="location.href='https://github.com/AlexandreAero/Kobalt'">
+      <div class="hidden-project" onclick="location.href='https://github.com/AlexandreAero/sharp-logger'">
         <img src="https://user-images.githubusercontent.com/66020831/246881738-950b138c-74ab-46f9-9144-3d82f9bf9785.png">
-        <div class="data-container">
+        <div class="project-data-container">
           <h2>Sharp logger</h2>
           <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg">
           <h3>A simple info logging system written in C#.</h3>
         </div>
       </div>
-      <div class="hidden" onclick="location.href='https://example.com'">
+      <div class="hidden-project" onclick="location.href='https://example.com'">
         <img src="https://user-images.githubusercontent.com/66020831/212474151-f75587a7-8c9f-42d0-8449-b6fa91d86807.png">
-        <div class="data-container">
+        <div class="project-data-container">
           <h2>AirlineAnnouncementsV1</h2>
           <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg">
           <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg">
           <h3>A tool that centralizes dozens of safety announcements from many airlines for flight simmers.</h3>
         </div>
       </div>
-      <div class="hidden" onclick="location.href='https://github.com/AlexandreAero/Boat-Detection'">
+      <div class="hidden-project" onclick="location.href='https://github.com/AlexandreAero/Boat-Detection'">
         <img src="https://user-images.githubusercontent.com/66020831/190869769-fa9cea3d-6e69-46a5-abcd-a9b5a5e9342f.png">
-        <div class="data-container">
+        <div class="project-data-container">
           <h2>BoatDetection</h2>
           <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg">
           <h3>A small Python script made for my studies a while ago while learning computer science.</h3>
         </div>
       </div>
-      <div class="hidden" onclick="location.href='https://example.com'">
+      <div class="hidden-project" onclick="location.href='https://example.com'">
         <img src="./assets/placeholder.png">
-        <div class="data-container">
+        <div class="project-data-container">
           <h2>A350</h2>
           <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg">
           <h3>Complex addon developed for Microsoft Flight Simulator.</h3>
         </div>
       </div>
-      <div class="hidden" onclick="location.href='https://example.com'">
+      <div class="hidden-project" onclick="location.href='https://github.com/AlexandreAero/particle-simulation-cpp'">
         <img src="https://user-images.githubusercontent.com/66020831/247111350-423f1891-3521-4a0d-8a6f-264e16b4664b.png">
-        <div class="data-container">
+        <div class="project-data-container">
           <h2>Particle simulation</h2>
           <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg">
           <h3>A project that simulates the motion of different materials such as sand, water and lava using SDL2.</h3>
         </div>
       </div>
-      <div class="hidden" onclick="location.href='https://example.com'">
+      <div class="hidden-project" onclick="location.href='https://github.com/AlexandreAero/skybox-beautifier'">
         <img src="https://user-images.githubusercontent.com/66020831/208423648-5562a49d-362d-4be4-a8b5-b11a86f7ce4d.png">
-        <div class="data-container">
+        <div class="project-data-container">
           <h2>Skybox Beautifier</h2>
           <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg">
           <h3>Decompose a single skybox texture to 6 texture images for 6 faces!</h3>
