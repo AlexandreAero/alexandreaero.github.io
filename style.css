@@ -6,11 +6,6 @@
   --pink: rgb(244, 143, 177);
   --stars-yellow: rgb(255, 200, 61);
   --font: 'Rubik', sans-serif;
-  --cursor: url("./assets/cursor.png"), auto;
-}
-
-* {
-  cursor: var(--cursor);
 }
 
 h1,
@@ -230,13 +225,12 @@ hr {
   font-size: 11px;
   text-align: left;
   margin-top: 80px;
-  margin-bottom: 80px;
   inline-size: 800px; 
   overflow: hidden;
 }
 
 .blog-button {
-  display: none;
+  margin-top: 20px;
   margin-bottom: 20px;
   background: linear-gradient(
     to left,
@@ -259,6 +253,9 @@ hr {
 
 .blog-button:hover {
   box-shadow: 0px 0px 10px var(--purple);
+  animation-fill-mode: forwards;
+  animation: blog-button-larger 0.5s forwards;
+  cursor: pointer;
 }
 
 .github-stats-section {
@@ -489,5 +486,14 @@ hr {
   }
   to {
     transform: translateY(-20px) rotate3d(0, 1, 0, 10deg);
+  }
+}
+
+@keyframes blog-button-larger {
+  from {
+    width: 160px;
+  }
+  to {
+    width: 250px;
   }
 }
