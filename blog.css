@@ -89,12 +89,6 @@ header {
   border-radius: 15px;
 }
 
-#blog-posts > section > img {
-  width: 150px;
-  height: 150px;
-  border-radius: 22px 0px 0px 0px;
-}
-
 .tags {
   display: grid;
   grid-template-columns: 10px 10px 10px 10px;
