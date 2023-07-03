@@ -84,6 +84,7 @@ header {
 }
 
 .thumbnail {
+  object-fit: cover;
   width: 800px;
   height: 400px;
   border-radius: 15px;

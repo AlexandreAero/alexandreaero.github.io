@@ -1,3 +1,32 @@
+const hiddenLanguages = document.querySelectorAll('.hidden-language');
+const hiddenProjects = document.querySelectorAll('.hidden-project');
+const elements = [...hiddenLanguages, ...hiddenProjects];
+const blob = document.getElementById('blob');
+
+const handleOnMouseMove = e => {
+  const { currentTarget: target} = e;
+
+  const rect = target.getBoundingClientRect();
+  x = e.clientX - rect.left;
+  y = e.clientY - rect.top;
+
+  target.style.setProperty("--mouse-x", `${x}px`);
+  target.style.setProperty("--mouse-y", `${y}px`);
+}
+
+document.body.onpointermove = e => {
+  const { clientX, clientY } = e;
+
+  blob.animate({
+    left: `${clientX}px`,
+    top: `${clientY}px`
+  }, {duration: 3000, fill: "forwards"});
+}
+
+for (const card of elements) {
+  card.onmousemove = e => handleOnMouseMove(e);
+}
+
 /**
  * Represents an easter egg star.
  */
