@@ -1,14 +1,14 @@
-const hiddenLanguages = document.querySelectorAll('.hidden-language');
-const hiddenProjects = document.querySelectorAll('.hidden-project');
-const elements = [...hiddenLanguages, ...hiddenProjects];
+const techTiles = document.querySelectorAll('.tech-tile');
+const projectTiles = document.querySelectorAll('.project-tile');
+const elements = [...projectTiles, ...techTiles];
 const blob = document.getElementById('blob');
 
 const handleOnMouseMove = e => {
-  const { currentTarget: target} = e;
+  const { currentTarget: target } = e;
 
   const rect = target.getBoundingClientRect();
-  x = e.clientX - rect.left;
-  y = e.clientY - rect.top;
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
 
   target.style.setProperty("--mouse-x", `${x}px`);
   target.style.setProperty("--mouse-y", `${y}px`);

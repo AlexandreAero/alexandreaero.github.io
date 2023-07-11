@@ -305,13 +305,13 @@ hr {
 
 .github-grid {
   display: grid;
-  justify-content: space-between;
+  grid-template-columns: 700px 580px;
+  justify-content: center;
   align-items: center;
   gap: 50px;
 }
 
 #github-commits-graph {
-  margin-left: 300px;
   width: 700px !important;
   height: 350px !important;
   grid-column: 1;
@@ -319,7 +319,6 @@ hr {
 }
 
 .github-textual-stats {
-  margin-right: 300px;
   grid-column: 2;
   grid-row: 1;
 }
@@ -513,24 +512,12 @@ hr {
   flex-direction: column;
   margin-top: 130px;
   align-items: center;
-  z-index: 10;
   position: relative;
 }
 
-.tech-section > h2:not(.last-text) {
-  text-align: center;
-}
-
-.tech-grid {
-  border: 1px solid rgba(164, 110, 250, 0.08);
-  box-shadow: 0px 0px 100px rgba(132, 31, 162, 0.13);
-  background: linear-gradient(
-    180deg, 
-    rgba(132, 31, 162, 0.08) 0%, 
-    rgba(224, 82, 160, 0.08) 100%
-  );
+.tech-section-grid {
   display: grid;
-  grid-template-columns: 160px 160px 160px 160px 160px 160px;
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
   box-sizing: border-box;
   justify-items: center;
@@ -538,56 +525,63 @@ hr {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 54%;
-  height: 500px;
-  border-radius: 10px 10px 25px 25px;
-}
-
-.hidden-language {
-  background-color: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  cursor: pointer;
-  position: relative;
-  width: 140px;
-  height: 140px;
-}
-
-.hidden-language::before {
-  background: radial-gradient(
-    400px circle at var(--mouse-x) var(--mouse-y),
-    rgba(255, 255, 255, 0.06),
-    transparent 40%
+  width: fit-content;
+  height: fit-content;
+  gap: 15px;
+  box-shadow: 0px 0px 100px rgba(132, 31, 162, 0.12);
+  background: linear-gradient(
+    180deg, 
+    rgba(132, 31, 162, 0.05) 0%,
+    rgba(195, 75, 189, 0.05) 50%,
+    rgba(220, 80, 200, 0.05) 75%, 
+    rgba(164, 110, 250, 0.05) 100%
   );
-  border-radius: inherit;
-  content: "";
-  height: 100%;
-  left: 0px;
-  opacity: 0;
-  position: absolute;
-  top: 0px;
-  transition: opacity 500ms;
-  width: 100%;
-  z-index: 2;
 }
 
-.hidden-language:hover::before {
-  opacity: 1;
+.tech-tile {
+  width: 330px;
+  height: 290px;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 100px rgba(123, 31, 162, 0.03);
+  border-radius: 20px;
+  background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 100%);
 }
 
-.hidden-language:hover {
-  animation: rotate-3d 1s linear forwards;
+.tech-tile-images-container {
+  margin-top: 25px;
+  margin-left: 20px;
 }
 
-.hidden-language > img {
-  width: 60px;
-  height: 60px;
-  transform: translateY(50%);
+.tech-tile-image {
+  width: 55px;
+  height: 55px;
+  border-radius: 999px;
+  background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px;
 }
 
-.hidden-language > h3 {
+.tech-tile-info {
+  padding: 20px 20px;
+}
+
+.tech-tile-info > h1 {
+  font-size: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tech-tile-info > h2 {
   font-size: 18px;
-  transform: translateY(50%);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.tech-tile-info > h1 > img {
+  width: 32px;
+  height: 32px;
 }
 
 .projects-section {
@@ -600,7 +594,7 @@ hr {
   text-align: center;
 }
 
-.hidden-project {
+.project-tile {
   background-color: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
@@ -611,7 +605,7 @@ hr {
   width: 400px;
 }
 
-.hidden-project::before {
+.project-tile::before {
   background: radial-gradient(
     400px circle at var(--mouse-x) var(--mouse-y),
     rgba(255, 255, 255, 0.06),
@@ -629,11 +623,11 @@ hr {
   z-index: 2;
 }
 
-.hidden-project:hover::before {
+.project-tile:hover::before {
   opacity: 1;
 }
 
-.hidden-project > img {
+.project-tile > img {
   width: 330px;
   height: 200px;
   border-radius: 20px;
