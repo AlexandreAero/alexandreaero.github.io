@@ -31,10 +31,9 @@ body {
 
 header {
   display: grid;
-  grid-template-columns: 522px 567px 300px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   align-items: center;
   height: 128px;
-  gap: 15px;
 }
 
 footer {
@@ -132,10 +131,12 @@ hr {
 }
 
 .name-text {
+  margin-left: -92px;
   font-size: 35px;
 }
 
 .socials-grid {
+  margin-left: -139px;
   display: grid;
   grid-template-columns: repeat(6, 55px);
 }
@@ -161,8 +162,7 @@ hr {
   background: linear-gradient(-45deg, #ffffff39, rgba(0, 0, 255, 0));
   border-radius: 999px;
   filter: drop-shadow(0 0 6px #699BFF);
-  animation: tail 1.5s ease-in-out 1,
-             falling 1.5s ease-in-out 1;
+  animation: tail 1.5s ease-in-out 1, falling 1.5s ease-in-out 1;
 }
 
 .shooting-star::before,
@@ -308,11 +308,11 @@ hr {
   align-items: center;
 }
 
-.blog-button-grid-content > h1 {
+.blog-button-grid-content-text {
   font-size: 17px;
 }
 
-.blog-button-grid-content > img {
+.blog-button-grid-content-arrow {
   width: 32px;
   height: 32px;
   border-radius: 999px;
@@ -346,29 +346,21 @@ hr {
 #github-commits-graph {
   width: 700px !important;
   height: 350px !important;
-  grid-column: 1;
-  grid-row: 1;
 }
 
-.github-textual-stats {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.github-textual-stats > h1 {
+.github-textual-stats-text-big {
   font-size: 28px;
 }
 
-.github-textual-stats > h2 {
+.github-textual-stats-text-small {
   font-size: 19px;
   color: rgba(255, 255, 255, 0.9);
 }
 
-.github-textual-stats > h1 > img:not(.snake-game-image),
-.github-textual-stats > h1 > svg {
+.github-textual-stats-text-big > img:not(.snake-game-image),
+.github-textual-stats-text-big > svg {
   height: 24px;
   width: 24px;
-  fill: white;
 }
 
 .snake-game-image {
@@ -377,7 +369,7 @@ hr {
 
 .commitment-section {
   display: grid;
-  grid-template-columns: 250px 250px 250px 250px 250px;
+  grid-template-columns: repeat(5, 250px);
   justify-content: center;
   gap: 45px;
 }
@@ -438,7 +430,7 @@ hr {
   margin: 15px;
 }
 
-.commit-number {
+.commitment-index {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -452,7 +444,7 @@ hr {
   background-image: linear-gradient(145deg, #201f22, #050505);
 }
 
-.commit-number > h1 {
+.commitment-index > h1 {
   text-align: center;
   margin-bottom: 10px;
   margin: 0;
@@ -542,6 +534,10 @@ hr {
   flex-direction: column;
   align-items: center;
   position: relative;
+}
+
+.tech-section > h2 {
+  text-align: center;
 }
 
 .tech-section-grid {
@@ -766,5 +762,46 @@ hr {
   }
   to {
     rotate: 360deg;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .bio-text-content {
+    font-size: 10px;
+    inline-size: 85%;
+  }
+
+  .bio-section {
+    width: 80%;
+  }
+
+  .tech-section-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .github-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .github-textual-stats > h1 {
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .github-textual-stats > h2 {
+    text-align: center;
+    font-size: 11px;
+  }
+
+  .snake-game-image {
+    display: block;
+    width: 400px;
+    margin: auto;
+  }
+
+  #github-commits-graph {
+    margin: auto;
+    width: 400px !important;
+    height: 225px !important;
   }
 }
