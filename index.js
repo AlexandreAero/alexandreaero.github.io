@@ -2,13 +2,13 @@ const blob = document.getElementById('blob');
 const projectTiles = document.querySelectorAll('.project-tile');
 const githubCommitsGraph = document.getElementById('github-commits-graph');
 const shootingStarsContainer = document.getElementById('shooting-stars-container');
-const commitmentTiles = [ document.querySelector('.first-commitment'),
-                          document.querySelector('.second-commitment'),
-                          document.querySelector('.third-commitment'),
-                          document.querySelector('.fourth-commitment'),
-                          document.querySelector('.fifth-commitment'),
-                          document.querySelector('.sixth-commitment'),
-                          document.querySelector('.seventh-commitment') ];
+const commitmentTiles = [document.querySelector('.first-commitment'),
+                         document.querySelector('.second-commitment'),
+                         document.querySelector('.third-commitment'),
+                         document.querySelector('.fourth-commitment'),
+                         document.querySelector('.fifth-commitment'),
+                         document.querySelector('.sixth-commitment'),
+                         document.querySelector('.seventh-commitment')];
 
 /**
  * Initialize all sub functions and sub systems of the page.
@@ -27,7 +27,7 @@ function initialize() {
 function initializeCommitmentTiles() {
   VanillaTilt.init(commitmentTiles, {
     max: 25,
-    speed: 4000,
+    speed: 3000,
     glare: true,
     "max-glare": 0.2
   });

@@ -92,7 +92,6 @@ hr {
 .section-separator-line {
   flex-grow: 1;
   width: 2px;
-  background: white;
   background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(103,58,183,0.8) 100%);
   margin: auto;
 }
@@ -320,8 +319,6 @@ hr {
 }
 
 .blog-button:hover {
-  box-shadow: 0px 0px 5px var(--purple);
-  animation-fill-mode: forwards;
   animation: blog-button-larger 0.5s forwards;
 }
 
@@ -618,7 +615,7 @@ hr {
 
 .projects-section {
   position: relative;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 
 .projects-section > h2:not(.last-text) {
@@ -660,7 +657,7 @@ hr {
 
 .project-tile > img {
   width: 330px;
-  height: 200px;
+  height: 180px;
   border-radius: 20px;
   transform: translate(10%, 10%);
   object-fit: cover;
@@ -673,10 +670,14 @@ hr {
 .project-data-container > img {
   width: 24px;
   height: 24px;
+  border-radius: 999px;
+  background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px;
 }
 
 .project-data-container > h2 {
-  margin-top: 25px;
+  margin-top: 30px;
   font-size: 25px;
 }
 
@@ -751,12 +752,8 @@ hr {
 }
 
 @keyframes blog-button-larger {
-  from {
-    transform: scale(1.0);
-  }
   to {
     width: 250px;
-    transform: scale(1.1);
   }
 }
 
