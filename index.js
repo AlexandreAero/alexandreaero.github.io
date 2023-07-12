@@ -1,5 +1,5 @@
-const projectTiles = document.querySelectorAll('.project-tile');
 const blob = document.getElementById('blob');
+const projectTiles = document.querySelectorAll('.project-tile');
 const githubCommitsGraph = document.getElementById('github-commits-graph');
 const shootingStarsContainer = document.getElementById('shooting-stars-container');
 const commitmentTiles = [ document.querySelector('.first-commitment'),
@@ -8,8 +8,11 @@ const commitmentTiles = [ document.querySelector('.first-commitment'),
                           document.querySelector('.fourth-commitment'),
                           document.querySelector('.fifth-commitment'),
                           document.querySelector('.sixth-commitment'),
-                          document.querySelector('.seventh-commitment')];
+                          document.querySelector('.seventh-commitment') ];
 
+/**
+ * Initialize all sub functions and sub systems of the page.
+ */
 function initialize() {
   initializeCommitmentTiles();
   setupShootingStarsEasterEgg();
@@ -18,6 +21,9 @@ function initialize() {
   createCommitChart();
 }
 
+/**
+ * Handles the tilt effect for the commitment tiles.
+ */
 function initializeCommitmentTiles() {
   VanillaTilt.init(commitmentTiles, {
     max: 25,
@@ -52,7 +58,7 @@ for (const tile of projectTiles) {
 }
 
 /**
- * Represents an easter egg star.
+ * Represents an easter egg shooting star.
  */
 class star {
   constructor(parentContainerDiv) {
@@ -80,11 +86,10 @@ class star {
  * Setups the shooting star easter egg.
  */
 function setupShootingStarsEasterEgg() {
-  const container = document.getElementById('shooting-stars-container');
   const spawnIntervalMs = 100;
   const maxStars = 10;
   
-  let activeStars = []; // Keep track of our active stars
+  let activeStarStack = []; // Keep track of our active stars
   let interval = null;
   let enteredChars = '';
 
@@ -96,7 +101,7 @@ function setupShootingStarsEasterEgg() {
       enteredChars = '';
       clearInterval(interval);
       interval = setInterval(() => {
-        generateStars(maxStars, activeStars, container);
+        generateStars(maxStars, activeStarStack, shootingStarsContainer);
       }, spawnIntervalMs);
     }
 
@@ -148,7 +153,7 @@ function showHideAnimations() {
  * Creates the project section carousel with TNS.
  */
 function createProjectCarousel() {
-  const tnsCfg = {
+  tns({
     container: '.projects-carousel',
     items: 1,
     autoplayButtonOutput: false,
@@ -160,9 +165,7 @@ function createProjectCarousel() {
     autoplay: true,
     controls: false,
     autoplayTimeout: 2000,
-  };
-  
-  tns(tnsCfg);
+  });
 }
 
 /**
