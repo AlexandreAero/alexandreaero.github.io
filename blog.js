@@ -4,6 +4,15 @@ const repoContentUrl = 'https://api.github.com/repos/AlexandreAero/alexandreaero
 const converter = new showdown.Converter({ metadata: true });
 
 /**
+ * Opens the blog post located at ``url``.
+ * @param {string} url 
+ */
+function openPost(url) {
+  location.href = './post.html';
+  sessionStorage.setItem('page', url);
+}
+
+/**
  * Loads the blog posts and builds the UI for them.
  * @param {[string]} postUrls 
  */
@@ -17,9 +26,9 @@ async function buildPosts(postUrls) {
       const html = converter.makeHtml(text);
       const metadata = converter.getMetadata();
       const tags = metadata.tags.split(';');
-    
+
       const postDom = `
-        <div id="post">
+        <div id="post" onclick="openPost('${url}')">
           <h2 class="date">${metadata.date}</h2>
           <div class="post-content">
             <img class="thumbnail" src=${metadata.thumbnail}>
@@ -47,6 +56,5 @@ async function buildPosts(postUrls) {
 fetch(repoContentUrl)
   .then((response) => response.json())
   .then((data) => data.map(item => `${rawPostUrl}${item.name}`))
-  .then(buildposts)
+  .then(buildPosts)
   .catch((error) => console.error(error));
-  

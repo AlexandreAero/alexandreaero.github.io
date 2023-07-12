@@ -44,9 +44,8 @@ footer {
 
 nav {
   display: flex;
-  padding-left: 20%;
-  padding-right: 20%;
-  justify-content: space-between;
+  gap: 120px;
+  justify-content: center;
 }
 
 hr {
@@ -685,25 +684,24 @@ hr {
   font-weight: 100;
 }
 
-.logo-nav-footer > img {
+.footer-logo {
   border-radius: 30%;
   height: 40px;
   width: 40px;
 }
 
-.blog-nav-footer > h1,
-.contact-nav-footer > h1 {
-  font-size: 18px;
-}
-
-.blog-nav-footer > h2,
-.contact-nav-footer > h2 {
-  font-size: 15px;
+.footer-contact > a,
+.footer-blog-posts > a {
+  display: block;
+  margin-bottom: 10px;
   color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font);
 }
 
-.copyrights > h2 {
-  font-size: 15px;
+.footer-blog-posts > h1,
+.footer-contact > h1,
+.footer-copyrights > h1 {
+  font-size: 18px;
 }
 
 .tns-nav {
