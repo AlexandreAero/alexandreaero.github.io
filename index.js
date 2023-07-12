@@ -1,8 +1,31 @@
-const blob = document.getElementById('blob');
-
-const techTiles = document.querySelectorAll('.tech-tile');
 const projectTiles = document.querySelectorAll('.project-tile');
-const elements = [...projectTiles, ...techTiles];
+const blob = document.getElementById('blob');
+const githubCommitsGraph = document.getElementById('github-commits-graph');
+const shootingStarsContainer = document.getElementById('shooting-stars-container');
+const commitmentTiles = [ document.querySelector('.first-commitment'),
+                          document.querySelector('.second-commitment'),
+                          document.querySelector('.third-commitment'),
+                          document.querySelector('.fourth-commitment'),
+                          document.querySelector('.fifth-commitment'),
+                          document.querySelector('.sixth-commitment'),
+                          document.querySelector('.seventh-commitment')];
+
+function initialize() {
+  initializeCommitmentTiles();
+  setupShootingStarsEasterEgg();
+  showHideAnimations();
+  createProjectCarousel();
+  createCommitChart();
+}
+
+function initializeCommitmentTiles() {
+  VanillaTilt.init(commitmentTiles, {
+    max: 25,
+    speed: 4000,
+    glare: true,
+    "max-glare": 0.2
+  });
+}
 
 const handleOnMouseMove = e => {
   const { currentTarget: target } = e;
@@ -21,11 +44,11 @@ document.body.onpointermove = e => {
   blob.animate({
     left: `${clientX}px`,
     top: `${clientY}px`
-  }, {duration: 3000, fill: "forwards"});
+  }, { duration: 3000, fill: "forwards" });
 }
 
-for (const card of elements) {
-  card.onmousemove = e => handleOnMouseMove(e);
+for (const tile of projectTiles) {
+  tile.onmousemove = e => handleOnMouseMove(e);
 }
 
 /**
@@ -34,22 +57,22 @@ for (const card of elements) {
 class star {
   constructor(parentContainerDiv) {
     this.container = parentContainerDiv;
-    this.dom = document.createElement('div');
+    this.div = document.createElement('div');
   }
 
   /**
    * Visually spawns the star with a random position.
    */
   spawn() {
-    const randomX = Math.random() * (this.container.offsetWidth - this.dom.offsetWidth);
-    const randomY = Math.random() * (this.container.offsetHeight - this.dom.offsetHeight);
+    const randomX = Math.random() * (this.container.offsetWidth - this.div.offsetWidth);
+    const randomY = Math.random() * (this.container.offsetHeight - this.div.offsetHeight);
 
-    this.dom.className = 'shooting-star';
+    this.div.className = 'shooting-star';
 
-    this.dom.style.left = randomX + 'px';
-    this.dom.style.top = randomY + 'px';
+    this.div.style.left = `${randomX}px`;
+    this.div.style.top = `${randomY}px`;
 
-    this.container.append(this.dom);
+    this.container.append(this.div);
   }
 }
 
@@ -85,20 +108,20 @@ function setupShootingStarsEasterEgg() {
 
 /**
  * Helper function to create and spawn ``count`` stars and
- * populates the ``activeStars`` array.
- * @param {Number} count 
- * @param {Array} activeStars 
- * @param {DOM Element} container 
+ * populates the ``starStack`` array.
+ * @param {number} count 
+ * @param {[star]} starStack 
+ * @param {dom} container 
  */
-function generateStars(count, activeStars, container) {
-  const spawnStar = new star(container);
-  spawnStar.spawn();
+function generateStars(count, starStack, container) {
+  const newStar = new star(container);
+  newStar.spawn();
 
-  activeStars.push(spawnStar.dom);
+  starStack.push(newStar.div);
 
   // Remove the oldest star if the maximum limit is reached
-  if (activeStars.length > count) {
-    const oldestStar = activeStars.shift();
+  if (starStack.length > count) {
+    const oldestStar = starStack.shift();
     oldestStar.remove();
   }
 }
@@ -145,50 +168,48 @@ function createProjectCarousel() {
 /**
  * Creates the GitHub commit chart.
  */
-function createCommitChart() {
-  const ctx = document.getElementById('github-commits-graph').getContext('2d');
+async function createCommitChart() {
+  const ctx = githubCommitsGraph.getContext('2d');
   const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-  gradient.addColorStop(0, 'rgba(115, 110, 250, 0.5)');  // Start color
-  gradient.addColorStop(1, 'rgba(0, 0, 0, 1)');    // End color
+  gradient.addColorStop(0, 'rgba(115, 110, 250, 0.5)'); // Start color
+  gradient.addColorStop(1, 'rgba(0, 0, 0, 1)'); // End color
 
-  const chartCfg = {
-    type: 'line',
-    data: {
-      labels: undefined,
-      datasets: [{
-        fill: 'origin',
-        label: 'Total commit count this year.',
-        data: undefined,
-        borderWidth: 2.5,
-        borderColor: 'rgb(115, 110, 250)',
-        lineTension: 0.35,
-        pointRadius: 0,
-        backgroundColor: gradient,
-      }]
-    }
-  };
-  
-  const githubUsername = 'AlexandreAero';
-  const currentYear = new Date().getFullYear();
-  
-  countCommitsForYearAndMonth(githubUsername, currentYear).then((count) => {
-    chartCfg.data.labels = Object.keys(count);
-    chartCfg.data.datasets[0].data = Object.values(count);
+  try {
+    const githubUsername = 'AlexandreAero';
+    const currentYear = new Date().getFullYear();
+    const count = await getCountCommitsForYearAndMonth(githubUsername, currentYear);
+
+    const chartCfg = {
+      type: 'line',
+      data: {
+        labels: Object.keys(count),
+        datasets: [{
+          fill: 'origin',
+          label: 'Total commit count this year.',
+          data: Object.values(count),
+          borderWidth: 2.5,
+          borderColor: 'rgb(115, 110, 250)',
+          lineTension: 0.35,
+          pointRadius: 0,
+          backgroundColor: gradient
+        }]
+      }
+    };
     
-    const ctx = document.getElementById('github-commits-graph');
-    
-    new Chart(ctx, chartCfg);
-  });
+    new Chart(githubCommitsGraph, chartCfg);
+  } catch (error) {
+    console.error('Failed to create commit chart:', error);
+  }
 }
 
 /**
  * Retrieve the total commit counts for all GitHub repositories
  * for each month in a given year
- * @param {String} username
- * @param {Number} year
- * @returns {Promise<{[string]: number}>}
+ * @param {string} username
+ * @param {number} year
+ * @returns {promise<{[string]: number}>}
  */
-async function countCommitsForYearAndMonth(username, year) {
+async function getCountCommitsForYearAndMonth(username, year) {
   // Check the cache
   const cacheKey = `${username}-${year}-data`;
   const cacheData = localStorage.getItem(cacheKey);
@@ -241,7 +262,4 @@ async function countCommitsForYearAndMonth(username, year) {
   return sortedCommitCounts;
 }
 
-setupShootingStarsEasterEgg();
-showHideAnimations();
-createProjectCarousel();
-createCommitChart();
+initialize();

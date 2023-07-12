@@ -41,30 +41,27 @@ hr {
 }
 
 header {
-  display: flex;
-  position: relative;
-  height: 128px;
+  display: grid;
+  grid-template-columns: 290px 85px 255px 255px;
   align-items: center;
-  justify-content: space-evenly;
+  height: 128px;
+  gap: 15px;
+  justify-content: center;
 }
 
 .logo {
-  position: relative;
   border-radius: 30%;
   height: 80px;
   width: 80px;
 }
 
 .name-text {
-  margin-left: -420px;
-  position: relative;
   font-size: 35px;
 }
 
 .socials-grid {
   display: grid;
-  grid-template-columns: 55px 55px 55px 55px 55px 55px;
-  position: relative;
+  grid-template-columns: repeat(6, 55px);
 }
 
 .socials-grid > input:hover {
@@ -90,13 +87,13 @@ header {
   border-radius: 15px;
 }
 
-.tags {
+.tags-container {
   display: grid;
-  grid-template-columns: 10px 10px 10px 10px;
+  grid-template-columns: repeat(4, 10px);
   gap: 95px;
 }
 
-.tags > h1 {
+.tags-container > h1 {
   border-radius: 50px;
   background-color: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -104,4 +101,37 @@ header {
   width: 90px;
   text-align: center;
   padding: 5px 2px;
+}
+
+.back-button {
+  background: radial-gradient(400px circle at 0px 0px, rgba(255, 255, 255, 0.06), transparent 50%);
+  box-shadow: 0px 0px 60px rgb(123 31 162 / 10%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  cursor: pointer;
+  width: 200px;
+  height: 40px;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button-grid-content {
+  display: grid;
+  grid-template-columns: 35px 155px;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-items: center;
+}
+
+.back-button-grid-content > h1 {
+  font-size: 17px;
+}
+
+.back-button-grid-content > img {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
 }

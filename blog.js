@@ -1,7 +1,7 @@
 const rawPostUrl = 'https://raw.githubusercontent.com/AlexandreAero/alexandreaero.github.io/main/posts/';
 const repoContentUrl = 'https://api.github.com/repos/AlexandreAero/alexandreaero.github.io/contents/posts';
 
-const converter = new showdown.Converter({metadata: true});
+const converter = new showdown.Converter({ metadata: true });
 
 /**
  * Loads the blog posts and builds the UI for them.
@@ -24,7 +24,7 @@ async function loadPosts(posts) {
           <div class="post-content">
             <img class="thumbnail" src=${metadata.thumbnail}>
             <h1 class="title">${metadata.title}<h1>
-            <div class="tags">
+            <div class="tags-container">
               ${tags.map(tag => `<h1>${tag}</h1>`).join('')}
             </div>
             <p>

@@ -30,17 +30,14 @@ body {
 }
 
 header {
-  z-index: 10;
-  display: flex;
-  position: relative;
-  height: 128px;
+  display: grid;
+  grid-template-columns: 522px 567px 300px;
   align-items: center;
-  justify-content: space-evenly;
+  height: 128px;
+  gap: 15px;
 }
 
 footer {
-  z-index: 10;
-  position: relative;
   margin-top: 40px;
   height: 250px;
 }
@@ -53,8 +50,6 @@ nav {
 }
 
 hr {
-  z-index: 10;
-  position: relative;
   width: 60%;
   opacity: 0.07;
 }
@@ -98,7 +93,7 @@ hr {
 .section-separator-line {
   flex-grow: 1;
   width: 2px;
-  background: rgb(255,255,255);
+  background: white;
   background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(103,58,183,0.8) 100%);
   margin: auto;
 }
@@ -132,34 +127,24 @@ hr {
 }
 
 .logo {
-  position: relative;
+  margin-left: 438px;
   border-radius: 30%;
   height: 80px;
   width: 80px;
 }
 
 .name-text {
-  margin-left: -420px;
-  position: relative;
   font-size: 35px;
 }
 
 .socials-grid {
   display: grid;
-  grid-template-columns: 55px 55px 55px 55px 55px 55px;
-  position: relative;
+  grid-template-columns: repeat(6, 55px);
 }
 
 .socials-grid > input:hover {
-  transition-duration: 0.3s;
+  transition-duration: 0.2s;
   opacity: 0.7;
-}
-
-.intro-section {
-  width: 100%;
-  height: 550px;
-  position: relative;
-  margin-top: 64px;
 }
 
 #shooting-stars-container {
@@ -197,6 +182,13 @@ hr {
 
 .shooting-star::after {
   transform: translateX(50%) rotateZ(-45deg);
+}
+
+.intro-section {
+  width: 100%;
+  height: 550px;
+  position: relative;
+  margin-top: 64px;
 }
 
 .review-grid {
@@ -262,8 +254,6 @@ hr {
 }
 
 .bio-section {
-  position: relative;
-  z-index: 10;
   box-shadow: 0px 0px 65px rgba(132, 31, 162, 0.12);
   background: linear-gradient(
     180deg, 
@@ -292,32 +282,48 @@ hr {
 }
 
 .blog-button {
+  background: radial-gradient(400px circle at 0px 0px, rgba(255, 255, 255, 0.06), transparent 50%);
+  box-shadow: 0px 0px 60px rgb(123 31 162 / 10%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  cursor: pointer;
+  width: 200px;
+  height: 48px;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 20px;
   margin-bottom: 20px;
-  background: linear-gradient(
-    to left,
-    var(--purple),
-    var(--violet),
-    var(--purple)
-  );
-  width: 160px;
-  height: 48px;
-  text-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
-  border-radius: 14.5px;
-  padding: 0px 15px;
-  border-color: transparent;
   font-family: var(--font);
-  color: white;
   font-weight: 700;
   font-size: 17px;
   transition: all 0.2s ease-in-out;
 }
 
+.blog-button-grid-content {
+  display: grid;
+  grid-template-columns: 35px 155px;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-items: center;
+}
+
+.blog-button-grid-content > h1 {
+  font-size: 17px;
+}
+
+.blog-button-grid-content > img {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+}
+
 .blog-button:hover {
-  box-shadow: 0px 0px 10px var(--purple);
+  box-shadow: 0px 0px 5px var(--purple);
   animation-fill-mode: forwards;
   animation: blog-button-larger 0.5s forwards;
-  cursor: pointer;
 }
 
 .github-stats-section {
@@ -746,18 +752,8 @@ hr {
   }
 }
 
-@keyframes rotate-3d {
-  from {
-    transform: translateY(0px) rotate3d(0, 0, 0, 0deg);
-  }
-  to {
-    transform: translateY(-20px) rotate3d(0, 1, 0, 10deg);
-  }
-}
-
 @keyframes blog-button-larger {
   from {
-    width: 160px;
     transform: scale(1.0);
   }
   to {
