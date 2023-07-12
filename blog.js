@@ -5,20 +5,20 @@ const converter = new showdown.Converter({ metadata: true });
 
 /**
  * Loads the blog posts and builds the UI for them.
- * @param {[string]} posts 
+ * @param {[string]} postUrls 
  */
-async function loadPosts(posts) {
-  const parentHolder = document.getElementById('blog-posts');
+async function buildPosts(postUrls) {
+  const postHolder = document.getElementById('blog-posts');
 
   try {
-    for (const post of posts) {
-      const response = await fetch(post);
+    for (const url of postUrls) {
+      const response = await fetch(url);
       const text = await response.text();
       const html = converter.makeHtml(text);
       const metadata = converter.getMetadata();
       const tags = metadata.tags.split(';');
     
-      const str = `
+      const postDom = `
         <div id="post">
           <h2 class="date">${metadata.date}</h2>
           <div class="post-content">
@@ -35,10 +35,9 @@ async function loadPosts(posts) {
             </p>
           </div>
         </div>
-        <hr>
-      `;
+        <hr>`;
 
-      parentHolder.insertAdjacentHTML('afterbegin', str);
+      postHolder.insertAdjacentHTML('afterbegin', postDom);
     }
   } catch (error) {
     console.error(error);
@@ -48,6 +47,6 @@ async function loadPosts(posts) {
 fetch(repoContentUrl)
   .then((response) => response.json())
   .then((data) => data.map(item => `${rawPostUrl}${item.name}`))
-  .then(loadPosts)
+  .then(buildposts)
   .catch((error) => console.error(error));
   
