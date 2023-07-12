@@ -84,6 +84,37 @@ hr {
   backdrop-filter: blur(200px);
 }*/
 
+.section-separator {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.section-separator-line {
+  flex-grow: 1;
+  width: 2px;
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(103,58,183,0.8) 100%);
+  margin: auto;
+}
+
+.section-separator-line-end {
+  height: 14px;
+  width: 14px;
+  background-color: var(--violet);
+  border-radius: 999px;
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .magic-text {
   animation: background-pan 3s linear infinite;
   background: linear-gradient(
@@ -290,7 +321,6 @@ hr {
 }
 
 .github-stats-section {
-  position: relative;
   margin-top: 130px;
 }
 
@@ -344,7 +374,6 @@ hr {
 }
 
 .commitment-section {
-  margin-top: 130px;
   display: grid;
   grid-template-columns: 250px 250px 250px 250px 250px;
   justify-content: center;
@@ -507,10 +536,8 @@ hr {
 }
 
 .tech-section {
-  margin-top: 64px;
   display: flex;
   flex-direction: column;
-  margin-top: 130px;
   align-items: center;
   position: relative;
 }
@@ -586,7 +613,6 @@ hr {
 
 .projects-section {
   position: relative;
-  margin-top: 130px;
   margin-bottom: 80px;
 }
 

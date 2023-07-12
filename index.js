@@ -1,7 +1,8 @@
+const blob = document.getElementById('blob');
+
 const techTiles = document.querySelectorAll('.tech-tile');
 const projectTiles = document.querySelectorAll('.project-tile');
 const elements = [...projectTiles, ...techTiles];
-const blob = document.getElementById('blob');
 
 const handleOnMouseMove = e => {
   const { currentTarget: target } = e;
