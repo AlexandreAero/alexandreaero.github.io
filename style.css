@@ -191,12 +191,10 @@ hr {
 
 .review-grid {
   white-space: nowrap;
-  position: relative;
   margin-left: 25%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
-  grid-auto-rows: minmax(100px, auto);
+  grid-template-columns: 386px 500px;
+  row-gap: 30px;
 }
 
 .stars {
@@ -214,26 +212,12 @@ hr {
   border-radius: 20px 0px 20px 0px;
 }
 
-.first-review {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.second-review {
-  grid-column: 1;
-  grid-row: 2;
-}
-
 .intro-text-1 {
   margin-left: 90px;
-  grid-column: 2;
-  grid-row: 1;
 }
 
 .intro-text-2 {
   margin-left: 150px;
-  grid-column: 2;
-  grid-row: 2;
 }
 
 .first-review,
@@ -697,8 +681,8 @@ hr {
 
 .footer-blog-posts > h1,
 .footer-contact > h1,
-.footer-copyrights > h1 {
-  font-size: 18px;
+.footer-copyrights > h2 {
+  font-size: 17px;
 }
 
 .tns-nav {
@@ -766,6 +750,37 @@ hr {
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
+  h2 {
+    font-size: 26px;
+  }
+
+  header {
+    height: 290px;
+    text-align: center;
+  }
+
+  nav {
+    gap: 0px;
+  }
+
+  .logo {
+    display: block;
+    margin: auto;
+  }
+
+  .socials-grid {
+    margin-left: 0px;
+    justify-content: center;
+  }
+
+  .name-text {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    margin-left: 0px;
+    font-size: 30px;
+  }
+
   .bio-text-content {
     font-size: 10px;
     inline-size: 85%;
@@ -790,7 +805,7 @@ hr {
 
   .github-textual-stats > h2 {
     text-align: center;
-    font-size: 11px;
+    font-size: 15px;
   }
 
   .snake-game-image {
@@ -803,5 +818,40 @@ hr {
     margin: auto;
     width: 400px !important;
     height: 225px !important;
+  }
+
+  .intro-section {
+    margin-bottom: 120px;
+  }
+
+  .review-grid {
+    margin-left: 0px;
+    justify-items: center;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .intro-text-2,
+  .intro-text-1 {
+    font-size: 29px;
+    margin-left: 0px;
+  }
+
+  .bio-text-content {
+    margin-top: 20px;
+  }
+
+  .bio-text-content > h1 > span {
+    display: block;
+    font-size: 22px;
+    word-break: break-word; 
+  }
+
+  .bio-text-content > h2 {
+    font-size: 18px;
+  }
+
+  /* Temporary */
+  .commitment-section {
+    display: none;
   }
 }
