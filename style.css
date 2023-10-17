@@ -5,12 +5,11 @@
   --violet: rgb(103, 58, 183);
   --pink: rgb(244, 143, 177);
   --stars-yellow: rgb(255, 200, 61);
+  
   --font: 'Rubik', sans-serif;
 }
 
-h1,
-h2,
-h3 {
+h1, h2, h3, h4 {
   font-family: var(--font);
   color: white;
 }
@@ -30,8 +29,8 @@ body {
 }
 
 header {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  justify-content: center;
   align-items: center;
   height: 128px;
 }
@@ -52,31 +51,6 @@ hr {
   opacity: 0.07;
 }
 
-/*#blob {
-  background-color: white;
-  height: 100px;
-  aspect-ratio: 1;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  translate: -50% -50%;
-  border-radius: 50%;
-  background: linear-gradient(
-    to right,
-    aquamarine,
-    mediumpurple
-  );
-  animation: rotate 20s infinite;
-}*/
-
-/*#blur {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 2;
-  backdrop-filter: blur(200px);
-}*/
-
 .section-separator {
   margin-top: 60px;
   margin-bottom: 60px;
@@ -91,7 +65,11 @@ hr {
 .section-separator-line {
   flex-grow: 1;
   width: 2px;
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(103,58,183,0.8) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0) 0%, 
+    rgba(103,58,183,0.8) 100%
+  );
   margin: auto;
 }
 
@@ -124,24 +102,24 @@ hr {
 }
 
 .logo {
-  margin-left: 438px;
   border-radius: 30%;
   height: 80px;
   width: 80px;
+  margin-right: 15px;
 }
 
 .name-text {
-  margin-left: -92px;
   font-size: 35px;
+  margin-right: 20%;
 }
 
 .socials-grid {
-  margin-left: -139px;
-  display: grid;
-  grid-template-columns: repeat(6, 55px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.socials-grid > input:hover {
+.socials-grid input:hover {
   transition-duration: 0.2s;
   opacity: 0.7;
 }
@@ -183,18 +161,17 @@ hr {
 }
 
 .intro-section {
-  width: 100%;
   height: 550px;
-  position: relative;
   margin-top: 64px;
 }
 
 .review-grid {
   white-space: nowrap;
-  margin-left: 25%;
   display: grid;
-  grid-template-columns: 386px 500px;
+  grid-template-columns: repeat(2, 30%);
   row-gap: 30px;
+  justify-content: center;
+  justify-items: center;
 }
 
 .stars {
@@ -212,12 +189,11 @@ hr {
   border-radius: 20px 0px 20px 0px;
 }
 
-.intro-text-1 {
-  margin-left: 90px;
-}
-
+.intro-text-1,
 .intro-text-2 {
-  margin-left: 150px;
+  align-items: center;
+  display: flex;
+  gap: 10px;
 }
 
 .first-review,
@@ -256,11 +232,10 @@ hr {
 }
 
 .bio-text-content {
-  width: 40%;
+  width: 80%;
   font-size: 11px;
   text-align: left;
   margin-top: 80px;
-  inline-size: 800px;
 }
 
 .blog-button {
@@ -754,11 +729,6 @@ hr {
     font-size: 26px;
   }
 
-  header {
-    height: 290px;
-    text-align: center;
-  }
-
   nav {
     gap: 0px;
   }
@@ -769,7 +739,6 @@ hr {
   }
 
   .socials-grid {
-    margin-left: 0px;
     justify-content: center;
   }
 
