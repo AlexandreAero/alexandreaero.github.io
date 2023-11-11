@@ -5,9 +5,9 @@
   <meta charset="utf-8"/>
   <meta name="description" content="Pilot Alex's developer portfolio">
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <link href="./style.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
   <link href="./images/Mandalorian.png" rel="shortcut icon">
-  <script defer src="./index.js"></script>
+  <script defer src="./js/index.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
 </head>
@@ -17,24 +17,45 @@
       <img class="logo" src="./images/Mandalorian.png" alt="Logo">
     </a>
     <h1 class="name-text">Pilot Alex</h1>
-    <div class="socials-grid">
+    <button id="social-burger-button" type="button">👋</button>
+    <div id="social-burger-content">
       <a href="https://github.com/AlexandreAero" target="_blank">
-        <img src="./images/github-logo.svg" alt="Github logo">
+        <img src="./images/socials/github-logo.svg" alt="Github logo">
       </a>
       <a href="https://www.instagram.com/pilotalex_28" target="_blank">
-        <img src="./images/instagram-logo.svg" alt="Instagram logo">
+        <img src="./images/socials/instagram-logo.svg" alt="Instagram logo">
       </a>
       <a href="https://www.instagram.com/pilotalex_28" target="_blank">
-        <img src="./images/twitter-logo.svg" alt="Twitter logo">
+        <img src="./images/socials/twitter-logo.svg" alt="Twitter logo">
       </a>
       <a href="https://www.youtube.com/channel/UC2f4gw46p9B9r5kDC93s1nA" target="_blank">
-        <img src="./images/youtube-logo.svg" alt="Youtube logo">
+        <img src="./images/socials/youtube-logo.svg" alt="Youtube logo">
       </a>
       <a href="https://open.spotify.com/user/1rcw0fq6c7is8liqxb7om7obx?si=ba7511d27f4d40f8" target="_blank">
-        <img src="./images/spotify-logo.svg" alt="Spotify logo">
+        <img src="./images/socials/spotify-logo.svg" alt="Spotify logo">
       </a>
       <a href="https://www.instagram.com/pilotalex_28" target="_blank">
-        <img src="./images/discord-logo.svg" alt="Discord logo">
+        <img src="./images/socials/discord-logo.svg" alt="Discord logo">
+      </a>
+    </div>
+    <div class="socials-grid">
+      <a href="https://github.com/AlexandreAero" target="_blank">
+        <img src="./images/socials/github-logo.svg" alt="Github logo">
+      </a>
+      <a href="https://www.instagram.com/pilotalex_28" target="_blank">
+        <img src="./images/socials/instagram-logo.svg" alt="Instagram logo">
+      </a>
+      <a href="https://www.instagram.com/pilotalex_28" target="_blank">
+        <img src="./images/socials/twitter-logo.svg" alt="Twitter logo">
+      </a>
+      <a href="https://www.youtube.com/channel/UC2f4gw46p9B9r5kDC93s1nA" target="_blank">
+        <img src="./images/socials/youtube-logo.svg" alt="Youtube logo">
+      </a>
+      <a href="https://open.spotify.com/user/1rcw0fq6c7is8liqxb7om7obx?si=ba7511d27f4d40f8" target="_blank">
+        <img src="./images/socials/spotify-logo.svg" alt="Spotify logo">
+      </a>
+      <a href="https://www.instagram.com/pilotalex_28" target="_blank">
+        <img src="./images/socials/discord-logo.svg" alt="Discord logo">
       </a>
     </div>
   </header>
@@ -103,12 +124,12 @@
       </canvas>
       <div class="github-textual-stats">
         <h1 class="github-textual-stats-text-big">
-          <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Github_white.svg">
+          <img src="./images/socials/github-logo.svg" alt="Github logo">
           A growing list of contributions over the years.
         </h1>
         <h2 class="github-textual-stats-text-small">Over <span class="magic-text">1000+</span> from 2020 to 2023.</h2>
         <h1 class="github-textual-stats-text-big">
-          <img src="./images/gh-issue.svg">
+          <img src="./images/gh-issue.svg" alt="Github issue icon">
           Mastering the workflow.
         </h1>
         <h2 class="github-textual-stats-text-small">Pull requests and issues no longer hold any <span class="magic-text">secrets</span> for me.</h2>
@@ -119,7 +140,14 @@
           <h2>Thinking bigger with <span class="magic-text">collaboration</span>.</h2>
           <h2>Collaboration transforms tasks into a collective <span class="magic-text">masterpiece</span>, where each note contributes to a seamless and satisfying melody of productivity.</h2>
         </div>
-        <img class="phone-mockup" src="./images/mockup.png">
+        <div class="mockups">
+          <img class="phone-mockup-one" src="./images/outlook-portrait.png" alt="Phone mockup">
+          <img class="phone-mockup-two" src="./images/teams-portrait.png" alt="Phone mockup">
+          <img class="phone-mockup-three" src="./images/mockup bg-portrait.png" alt="Phone mockup">
+          <img class="phone-mockup-four" src="./images/teams-portrait.png" alt="Phone mockup">
+          <img class="phone-mockup-five" src="./images/mockup bg-portrait.png" alt="Phone mockup">
+          <img class="phone-mockup-six" src="./images/teams-portrait.png" alt="Phone mockup">
+        </div>
       </div>
     </div>
   </div>
@@ -132,9 +160,9 @@
   <div class="commitment-section">
     <h1 class="commitment-intro-text">My <span class="magic-text">commitments</span> as a developer.</h1>
     <div class="commitment-section-arrow-block">
-      <img src="./images/arrow.svg">
-      <img src="./images/arrow.svg">
-      <img src="./images/arrow.svg">
+      <img src="./images/arrow.svg" alt="Arrow">
+      <img src="./images/arrow.svg" alt="Arrow">
+      <img src="./images/arrow.svg" alt="Arrow">
     </div>
     <div class="first-commitment">
       <h2>
@@ -204,8 +232,8 @@
     <div class="tech-section-grid">
       <div class="tech-tile">
         <div class="tech-tile-images-container">
-          <img class="tech-tile-image" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg">
-          <img class="tech-tile-image" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg">
+          <img class="tech-tile-image" src="./images/languages/cpp.svg">
+          <img class="tech-tile-image" src="./images/languages/c.svg">
         </div>
         <div class="tech-tile-info">
           <h1>
@@ -217,8 +245,8 @@
       </div>
       <div class="tech-tile">
         <div class="tech-tile-images-container">
-          <img class="tech-tile-image" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg">
-          <img class="tech-tile-image" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg">
+          <img class="tech-tile-image" src="./images/languages/cs.svg">
+          <img class="tech-tile-image" src="./images/languages/golang.svg">
         </div>
         <div class="tech-tile-info">
           <h1>
@@ -230,7 +258,7 @@
       </div>
       <div class="tech-tile">
         <div class="tech-tile-images-container">
-          <img class="tech-tile-image" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg">
+          <img class="tech-tile-image" src="./images/languages/py.svg">
         </div>
         <div class="tech-tile-info">
           <h1>
@@ -242,9 +270,9 @@
       </div>
       <div class="tech-tile">
         <div class="tech-tile-images-container">
-          <img class="tech-tile-image" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg">
-          <img class="tech-tile-image" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
-          <img class="tech-tile-image" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
+          <img class="tech-tile-image" src="./images/languages/js.svg">
+          <img class="tech-tile-image" src="./images/languages/html.svg">
+          <img class="tech-tile-image" src="./images/languages/css.svg">
         </div>
         <div class="tech-tile-info">
           <h1>
@@ -256,7 +284,7 @@
       </div>
       <div class="tech-tile">
         <div class="tech-tile-images-container">
-          <img class="tech-tile-image" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" alt="logo">
+          <img class="tech-tile-image" src="./images/languages/nodejs.svg" alt="logo">
         </div>
         <div class="tech-tile-info">
           <h1>
@@ -270,7 +298,7 @@
         <div class="tech-tile-images-container">
           <img class="tech-tile-image" src="https://pypi.org/static/images/logo-small.2a411bc6.svg">
           <img class="tech-tile-image" src="https://vcpkg.io/assets/mark/mark.svg">
-          <img class="tech-tile-image" src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/npm/npm-original-wordmark.svg">
+          <img class="tech-tile-image" src="./images/languages/npm.svg">
         </div>
         <div class="tech-tile-info">
           <h1>
@@ -384,6 +412,6 @@
     </nav>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
-  <script src="./vanilla-tilt.js"></script>
+  <script src="./js/vanilla-tilt.js"></script>
 </body>
 </html>

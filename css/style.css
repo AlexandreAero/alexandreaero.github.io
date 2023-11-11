@@ -1,9 +1,10 @@
 :root {
-  --background-color-dark: rgb(18, 18, 18);
+  --background-color-dark: rgb(16, 16, 16);
   --background-color-light: rgb(222, 222, 222);
   --purple: rgb(123, 31, 162);
   --violet: rgb(103, 58, 183);
   --pink: rgb(244, 143, 177);
+  --container: rgb(30, 30, 30);
   --stars-yellow: rgb(255, 200, 61);
   
   --font: 'Rubik', sans-serif;
@@ -37,12 +38,12 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 128px;
+  height: 17vh;
 }
 
 footer {
-  margin-top: 40px;
-  height: 250px;
+  margin-top: 3%;
+  height: 40vh;
 }
 
 nav {
@@ -118,7 +119,7 @@ a {
 }
 
 .name-text {
-  font-size: 33px;
+  font-size: 2.06rem;
   margin-right: 20%;
 }
 
@@ -137,6 +138,28 @@ a {
   text-align: center;
   width: 29px;
   height: 29px;
+}
+
+#social-burger-button {
+  border: none;
+  border-radius: 999%;
+  padding: 2px;
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+}
+
+#social-burger-content {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  position: absolute;
+  left: 80%;
+}
+
+#social-burger-content img {
+  width: 50px;
+  height: 50px;
 }
 
 #shooting-stars-container {
@@ -205,7 +228,7 @@ a {
 
 .review-content {
   font-weight: 400;
-  font-size: 22px;
+  font-size: 1.375rem;
 }
 
 .review-profile-picture {
@@ -214,27 +237,26 @@ a {
 
 .intro-text-1,
 .intro-text-2 {
+  max-width: 100%;
   overflow-wrap: break-word;
   text-align: center;
-  font-size: 29px;
+  font-size: 1.8rem;
 }
 
 .intro-text-1 .magic-text,
 .intro-text-2 .magic-text {
-  font-size: 45px;
+  font-size: 2.8rem;
 }
 
 .dot-dot-dot {
-  font-size: 22px;
+  font-size: 1.5rem;
 }
 
 .first-review,
 .second-review {
   box-shadow: 0px 0px 60px rgb(123 31 162 / 8%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
-  width: fit-content;
-  height: fit-content;
   min-width: 256px;
   background: radial-gradient(
     400px circle at 0px 0px,
@@ -252,7 +274,7 @@ a {
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
-  background-color: rgb(30, 30, 30);
+  background-color: var(--container);
 }
 
 .bio-text-content {
@@ -262,7 +284,7 @@ a {
   grid-template-columns: repeat(2, 50%);
   margin-top: 5%;
   width: 90%;
-  font-size: 11px;
+  font-size: 0.7rem;
 }
 
 .bio-text-content h2,
@@ -273,7 +295,7 @@ a {
 }
 
 .bio-text-content h3 {
-  font-size: 17px;
+  font-size: 1.07rem;
 }
 
 .blog-button {
@@ -293,7 +315,7 @@ a {
   margin-bottom: 20px;
   font-family: var(--font);
   font-weight: 700;
-  font-size: 17px;
+  font-size: 1.1rem;
   transition: all 0.2s ease-in-out;
 }
 
@@ -306,7 +328,7 @@ a {
 }
 
 .blog-button-grid-content-text {
-  font-size: 17px;
+  font-size: 1.1rem;
 }
 
 .blog-button-grid-content-arrow {
@@ -346,7 +368,7 @@ a {
 #github-commits-graph {
   width: 100% !important;
   height: 100% !important;
-  background-color: rgb(30, 30, 30);
+  background-color: var(--container);
   border-radius: 20px;
   padding: 3%;
 }
@@ -354,22 +376,22 @@ a {
 .github-textual-stats {
   height: 100%;
   width: 100%;
-  background-color: rgb(30, 30, 30);
+  background-color: var(--container);
   border-radius: 20px;
   padding: 4%;
   box-sizing: border-box;
 }
 
 .github-sum {
-  display: flex;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
   width: 100%;
   height: 100%;
-  justify-content: center;
   align-items: center;
   grid-column: span 2;
-  background-color: rgb(30, 30, 30);
+  background-color: var(--container);
   border-radius: 20px;
-  overflow: hidden;
 }
 
 .github-sum:hover,
@@ -379,24 +401,50 @@ a {
 }
 
 .collab-text {
-  width: 45%;
   text-align: center;
 }
 
 .collab-text h2 {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
-.phone-mockup {
-  height: 100%;
+.mockups {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-height: 50vh;
+  gap: 1%;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.mockups img {
+  width: 100%;
+  height: auto;
+}
+
+.phone-mockup-one,
+.phone-mockup-four,
+.phone-mockup-seven {
+  transform: translateY(-25%);
+}
+
+.phone-mockup-two,
+.phone-mockup-five {
+  transform: translateY(-50%);
+}
+
+.phone-mockup-three,
+.phone-mockup-six {
+  transform: translateY(-10%);
 }
 
 .github-textual-stats-text-big {
-  font-size: 28px;
+  font-size: 1.75rem;
 }
 
 .github-textual-stats-text-small {
-  font-size: 19px;
+  font-size: 1.18rem;
   color: rgba(255, 255, 255, 0.9);
 }
 
@@ -408,8 +456,9 @@ a {
 
 .snake-game-image {
   width: 90%;
+  max-width: 100%;
   display: block;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .commitment-section {
@@ -420,13 +469,13 @@ a {
 }
 
 .commitment-intro-text {
-  font-size: 45px;
+  font-size: 2.8rem;
   grid-column: 4;
   grid-row: 1;
 }
 
 .commitment-intro-text > .magic-text {
-  font-size: 65px;
+  font-size: 4.05rem;
 }
 
 .commitment-section-arrow-block {
@@ -491,7 +540,7 @@ a {
 .commitment-section > div > h2 {
   text-align: left;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 18px;
+  font-size: 1.12rem;
   letter-spacing: 0.2px;
 }
 
@@ -543,6 +592,10 @@ a {
   position: relative;
 }
 
+.tech-section h2 {
+  text-align: center;
+}
+
 .tech-section-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -563,7 +616,7 @@ a {
   height: 290px;
   text-align: left;
   border-radius: 20px;
-  background: rgb(31, 31, 31);
+  background: var(--container);
 }
 
 .tech-tile-images-container {
@@ -586,7 +639,7 @@ a {
 }
 
 .tech-tile-info > h1 {
-  font-size: 20px;
+  font-size: 1.25rem;
   color: white;
   display: flex;
   align-items: center;
@@ -594,7 +647,7 @@ a {
 }
 
 .tech-tile-info > h2 {
-  font-size: 18px;
+  font-size: 1.125rem;
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -667,12 +720,12 @@ a {
 
 .project-data-container > h2 {
   margin-top: 30px;
-  font-size: 25px;
+  font-size: 1.55rem;
 }
 
 .project-data-container > h3 {
   font-weight: 100;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .footer-logo {
@@ -692,11 +745,15 @@ a {
 .footer-blog-posts > h1,
 .footer-contact > h1,
 .footer-copyrights > h2 {
-  font-size: 17px;
+  font-size: 1.05rem;
 }
 
 .tns-nav {
   display: none;
+}
+
+.burger-hidden {
+  display: none !important;
 }
 
 @keyframes larger {
@@ -769,6 +826,83 @@ a {
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
+  header {
+    display: flex;
+    height: fit-content;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    height: 50px;
+    width: 50px;
+  }
+
+  .name-text {
+    align-self: center;
+    font-size: 20px;
+  }
+
+  .social-burger-button {
+    display: block;
+  }
+
+  .socials-grid {
+    display: none;
+  }
+
+  .intro-text-2,
+  .intro-text-1 {
+    font-size: 20px;
+    margin-left: 0px;
+  }
+
+  #shooting-stars-container {
+    display: none;
+  }
+
+  .commitment-section-arrow-block {
+    display: none;
+  }
+
+  .bio-section {
+    width: 95%;
+  }
+
+  .github-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 90%;
+  }
+
+  #github-commits-graph {
+    margin: auto;
+  }
+
+  .commitment-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .commitment-intro-text {
+    text-align: center;
+  }
+
+  .first-commitment,
+  .second-commitment,
+  .third-commitment,
+  .fourth-commitment,
+  .fifth-commitment,
+  .sixth-commitment,
+  .seventh-commitment {
+    margin-top: 15px;
+    width: 90%;
+  }
+
+  /*  */
+
   h2 {
     font-size: 26px;
   }
@@ -777,37 +911,12 @@ a {
     gap: 0px;
   }
 
-  .logo {
-    display: block;
-    margin: auto;
-  }
-
-  .socials-grid {
-    justify-content: center;
-  }
-
-  .name-text {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    text-align: center;
-    margin-left: 0px;
-    font-size: 30px;
-  }
-
   .bio-text-content {
     font-size: 10px;
     inline-size: 85%;
   }
 
-  .bio-section {
-    width: 80%;
-  }
-
   .tech-section-grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .github-grid {
     grid-template-columns: repeat(1, 1fr);
   }
 
@@ -827,26 +936,10 @@ a {
     margin: auto;
   }
 
-  #github-commits-graph {
-    margin: auto;
-    width: 400px !important;
-    height: 225px !important;
-  }
-
-  .intro-section {
-    margin-bottom: 120px;
-  }
-
   .review-grid {
     margin-left: 0px;
     justify-items: center;
     grid-template-columns: repeat(1, 1fr);
-  }
-
-  .intro-text-2,
-  .intro-text-1 {
-    font-size: 29px;
-    margin-left: 0px;
   }
 
   .bio-text-content {
@@ -861,10 +954,5 @@ a {
 
   .bio-text-content > h2 {
     font-size: 18px;
-  }
-
-  /* Temporary */
-  .commitment-section {
-    display: none;
   }
 }

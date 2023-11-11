@@ -1,3 +1,5 @@
+const burger = document.getElementById('social-burger-button');
+const burgerList = document.getElementById('social-burger-content');
 const projectTiles = document.querySelectorAll('.project-tile');
 const githubCommitsGraph = document.getElementById('github-commits-graph');
 const shootingStarsContainer = document.getElementById('shooting-stars-container');
@@ -18,6 +20,15 @@ function initialize() {
     showHideAnimations();
     createProjectCarousel();
     createCommitChart();
+
+    burgerList.classList.add('burger-hidden');
+    // burger.classList.add('burger-hidden');
+
+    burger.addEventListener('click', showBurgerList);
+}
+
+function showBurgerList() {
+    burgerList.classList.toggle('burger-hidden');
 }
 
 /**
