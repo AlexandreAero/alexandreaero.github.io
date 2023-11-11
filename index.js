@@ -25,7 +25,7 @@ function initialize() {
  */
 function initializeCommitmentTiles() {
     VanillaTilt.init(commitmentTiles, {
-        max: 25,
+        max: 10,
         speed: 3000,
         glare: true,
         "max-glare": 0.2
@@ -162,9 +162,6 @@ function createProjectCarousel() {
  */
 async function createCommitChart() {
     const ctx = githubCommitsGraph.getContext('2d');
-    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(115, 110, 250, 0.5)'); // Start color
-    gradient.addColorStop(1, 'rgba(0, 0, 0, 1)'); // End color
 
     try {
         const githubUsername = 'AlexandreAero';
@@ -176,14 +173,14 @@ async function createCommitChart() {
             data: {
                 labels: Object.keys(count),
                 datasets: [{
-                fill: 'origin',
-                label: 'Total commit count this year.',
-                data: Object.values(count),
-                borderWidth: 2.5,
-                borderColor: 'rgb(115, 110, 250)',
-                lineTension: 0.35,
-                pointRadius: 0,
-                backgroundColor: gradient
+                    fill: true,
+                    label: 'Total commit count this year.',
+                    data: Object.values(count),
+                    borderWidth: 4,
+                    borderColor: 'rgb(115, 110, 250)',
+                    lineTension: 0.35,
+                    pointRadius: 0,
+                    backgroundColor: 'rgba(115, 110, 250, 0.1)'
                 }]
             }
         };
