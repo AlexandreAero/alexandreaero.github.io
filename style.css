@@ -1,5 +1,5 @@
 :root {
-  --background-color-dark: rgb(22, 22, 22);
+  --background-color-dark: rgb(18, 18, 18);
   --background-color-light: rgb(222, 222, 222);
   --purple: rgb(123, 31, 162);
   --violet: rgb(103, 58, 183);
@@ -22,6 +22,11 @@ h1 {
 h2 {
   font-weight: 100;
   font-size: clamp(2em, 1vw, 1em);
+}
+
+h3 {
+  font-weight: 100;
+  font-size: clamp(1.5em, 1vw, 3em);
 }
 
 body {
@@ -52,8 +57,8 @@ hr {
 }
 
 .section-separator {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   height: 200px;
   display: flex;
   flex-direction: column;
@@ -239,30 +244,36 @@ a {
 }
 
 .bio-section {
-  box-shadow: 0px 0px 65px rgba(132, 31, 162, 0.12);
-  background: linear-gradient(
-    180deg, 
-    rgba(132, 31, 162, 0.05) 0%,
-    rgba(195, 75, 189, 0.05) 50%,
-    rgba(220, 80, 200, 0.05) 75%, 
-    rgba(164, 110, 250, 0.05) 100%
-  );
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 60%;
+  width: 55%;
   justify-content: center;
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid rgba(164, 110, 250, 0.08);
+  background-color: rgb(30, 30, 30);
 }
 
 .bio-text-content {
+  display: grid;
+  gap: 1rem;
+  align-items: baseline;
+  grid-template-columns: repeat(2, 50%);
   margin-top: 5%;
-  width: 80%;
+  width: 90%;
   font-size: 11px;
-  text-align: left;
+}
+
+.bio-text-content h2,
+.bio-text-content h3,
+.bio-text-content h2 span {
+  word-break: normal;
+  white-space: pre-wrap;
+}
+
+.bio-text-content h3 {
+  font-size: 17px;
 }
 
 .blog-button {
@@ -455,7 +466,6 @@ a {
 .seventh-commitment {
   padding: 10px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
   background: radial-gradient( 
     600px circle at 0px 0px,
     rgba(255, 255, 255, 0.06), 
@@ -567,8 +577,7 @@ a {
   width: 55px;
   height: 55px;
   border-radius: 0.4em;
-  background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.07) 100%);
   padding: 10px;
 }
 
@@ -605,7 +614,6 @@ a {
 
 .project-tile {
   background-color: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   cursor: pointer;
   position: relative;
@@ -664,6 +672,7 @@ a {
 
 .project-data-container > h3 {
   font-weight: 100;
+  font-size: 20px;
 }
 
 .footer-logo {
