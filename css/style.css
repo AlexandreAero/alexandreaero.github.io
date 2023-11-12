@@ -60,7 +60,7 @@ hr {
 .section-separator {
   margin-top: 40px;
   margin-bottom: 40px;
-  height: 200px;
+  height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -199,9 +199,8 @@ a {
 }
 
 .intro-section {
-  height: 100%;
-  margin-top: 64px;
-  margin-bottom: 64px;
+  margin-top: 15vh;
+  margin-bottom: 15vh;
 }
 
 .review-grid {
@@ -213,7 +212,25 @@ a {
   align-items: center;
 }
 
+.review-header {
+  display: flex;
+  font-size: 1.4rem;
+  gap: 10%;
+  justify-content: flex-start;
+}
+
+.review-profile-picture {
+  border-radius: 20px 0px 20px 0px;
+  width: 64px;
+  height: 64px;
+}
+
+.review-username {
+  font-size: 1.4rem;
+}
+
 .stars {
+  margin-top: 10px;
   display: flex;
   width: 20px;
   height: 20px;
@@ -221,30 +238,22 @@ a {
   margin-left: 20px;
 }
 
-.review-username,
 .review-content {
   margin-left: 20px;
+  font-weight: 100;
+  font-size: 1.3rem;
 }
 
-.review-content {
-  font-weight: 400;
-  font-size: 1.375rem;
-}
-
-.review-profile-picture {
-  border-radius: 20px 0px 20px 0px;
-}
-
-.intro-text-1,
-.intro-text-2 {
+.first-intro-text,
+.second-intro-text {
   max-width: 100%;
   overflow-wrap: break-word;
   text-align: center;
   font-size: 1.8rem;
 }
 
-.intro-text-1 .magic-text,
-.intro-text-2 .magic-text {
+.first-intro-text .magic-text,
+.second-intro-text .magic-text {
   font-size: 2.8rem;
 }
 
@@ -280,11 +289,21 @@ a {
 .bio-text-content {
   display: grid;
   gap: 1rem;
-  align-items: baseline;
+  align-items: center;
   grid-template-columns: repeat(2, 50%);
   margin-top: 5%;
   width: 90%;
   font-size: 0.7rem;
+  justify-items: start;
+  justify-content: center;
+}
+
+.bio-text-content hr {
+  grid-column: 1 / -1; 
+  width: 85%;
+  border: none;
+  border-top: 1px solid #d8d8d8;
+  margin: auto;
 }
 
 .bio-text-content h2,
@@ -301,14 +320,13 @@ a {
 .blog-button {
   background: radial-gradient(400px circle at 0px 0px, rgba(255, 255, 255, 0.06), transparent 50%);
   box-shadow: 0px 0px 60px rgb(123 31 162 / 10%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 20px;
   cursor: pointer;
-  width: 200px;
-  height: 48px;
+  width: 140px;
+  height: 30px;
   color: white;
   text-decoration: none;
-  display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 20px;
@@ -316,36 +334,34 @@ a {
   font-family: var(--font);
   font-weight: 700;
   font-size: 1.1rem;
-  transition: all 0.2s ease-in-out;
-}
-
-.blog-button-grid-content {
-  display: grid;
-  grid-template-columns: 35px 155px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  display: flex;
   justify-content: space-evenly;
-  justify-items: center;
   align-items: center;
 }
 
-.blog-button-grid-content-text {
-  font-size: 1.1rem;
+.blog-button-text {
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
-.blog-button-grid-content-arrow {
-  width: 32px;
-  height: 32px;
+.blog-button-arrow {
+  width: 20px;
+  height: 20px;
   border-radius: 999px;
+  transform: rotateZ(180deg);
 }
 
 .blog-button:hover {
-  animation: blog-button-larger 0.5s forwards;
+  opacity: 1;
 }
 
 .github-stats-section {
   margin-top: 130px;
 }
 
-.github-stats-section > h2 {
+.github-stats-section h2 {
   text-align: center;
 }
 
@@ -360,7 +376,7 @@ a {
   justify-items: center;
   align-items: center;
   justify-content: center;
-  gap: 2%;
+  gap: 3%;
   width: 70%;
   margin: auto;
 }
@@ -448,8 +464,8 @@ a {
   color: rgba(255, 255, 255, 0.9);
 }
 
-.github-textual-stats-text-big > img:not(.snake-game-image),
-.github-textual-stats-text-big > svg {
+.github-icon,
+.issue-icon {
   height: 24px;
   width: 24px;
 }
@@ -465,7 +481,8 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 15%);
   justify-content: center;
-  gap: 3%;
+  justify-items: center;
+  gap: 6%;
 }
 
 .commitment-intro-text {
@@ -537,8 +554,7 @@ a {
   background-image: linear-gradient(145deg, #201f22, #050505);
 }
 
-.commitment-section > div > h2 {
-  text-align: left;
+.commitment-index-container {
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.12rem;
   letter-spacing: 0.2px;
@@ -592,7 +608,7 @@ a {
   position: relative;
 }
 
-.tech-section h2 {
+.tech-section .last-text {
   text-align: center;
 }
 
@@ -608,7 +624,8 @@ a {
   text-align: center;
   width: fit-content;
   height: fit-content;
-  gap: 15px;
+  gap: 2%;
+  row-gap: 3%;
 }
 
 .tech-tile {
@@ -638,7 +655,7 @@ a {
   padding: 20px 20px;
 }
 
-.tech-tile-info > h1 {
+.tech-tile-info-title {
   font-size: 1.25rem;
   color: white;
   display: flex;
@@ -651,7 +668,7 @@ a {
   color: rgba(255, 255, 255, 0.85);
 }
 
-.tech-tile-info > h1 > img {
+.tech-tile-info-title > img {
   width: 32px;
   height: 32px;
 }
@@ -807,12 +824,6 @@ a {
   }
 }
 
-@keyframes blog-button-larger {
-  to {
-    width: 250px;
-  }
-}
-
 @keyframes rotate {
   from {
     rotate: 0deg;
@@ -851,8 +862,8 @@ a {
     display: none;
   }
 
-  .intro-text-2,
-  .intro-text-1 {
+  .second-intro-text,
+  .first-intro-text {
     font-size: 20px;
     margin-left: 0px;
   }

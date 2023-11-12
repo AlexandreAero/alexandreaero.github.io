@@ -1,5 +1,3 @@
-const burger = document.getElementById('social-burger-button');
-const burgerList = document.getElementById('social-burger-content');
 const projectTiles = document.querySelectorAll('.project-tile');
 const githubCommitsGraph = document.getElementById('github-commits-graph');
 const shootingStarsContainer = document.getElementById('shooting-stars-container');
@@ -16,19 +14,9 @@ const commitmentTiles = [document.querySelector('.first-commitment'),
  */
 function initialize() {
     initializeCommitmentTiles();
-    setupShootingStarsEasterEgg();
-    showHideAnimations();
+    initializeProjectTileMouseOver();
     createProjectCarousel();
     createCommitChart();
-
-    burgerList.classList.add('burger-hidden');
-    // burger.classList.add('burger-hidden');
-
-    burger.addEventListener('click', showBurgerList);
-}
-
-function showBurgerList() {
-    burgerList.classList.toggle('burger-hidden');
 }
 
 /**
@@ -43,9 +31,21 @@ function initializeCommitmentTiles() {
     });
 }
 
-const handleOnMouseMove = (event) => {
-    const { currentTarget: target } = event;
+/**
+ * Handles the mouse move effect for project tiles.
+ */
+function initializeProjectTileMouseOver() {
+    for (const tile of projectTiles) {
+        tile.onmousemove = (e) => handleOnMouseMove(e);
+    }
+}
 
+/**
+ * Handles the mouse move effect for a specific tile.
+ * @param {MouseEvent} event
+ */
+function handleOnMouseMove(event) {
+    const { currentTarget: target } = event;
     const rect = target.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
@@ -56,97 +56,6 @@ const handleOnMouseMove = (event) => {
 
 for (const tile of projectTiles) {
     tile.onmousemove = (e) => handleOnMouseMove(e);
-}
-
-/**
- * Represents an easter egg shooting star.
- */
-class Star {
-    constructor(parentContainerDiv) {
-        this.container = parentContainerDiv;
-        this.div = document.createElement('div');
-    }
-
-    /**
-     * Visually spawns the star with a random position.
-     */
-    spawn() {
-        const randomX = Math.random() * (this.container.offsetWidth - this.div.offsetWidth);
-        const randomY = Math.random() * (this.container.offsetHeight - this.div.offsetHeight);
-
-        this.div.className = 'shooting-star';
-
-        this.div.style.left = `${randomX}px`;
-        this.div.style.top = `${randomY}px`;
-
-        this.container.append(this.div);
-    }
-}
-
-/**
- * Setups the shooting star easter egg.
- */
-function setupShootingStarsEasterEgg() {
-    const spawnIntervalMs = 100;
-    const maxStars = 10;
-    
-    let activeStarStack = []; // Keep track of our active stars
-    let interval = null;
-    let enteredChars = '';
-
-    document.addEventListener('keydown', (event) => {
-        const keyChar = event.key;
-        enteredChars += keyChar;
-
-        if (enteredChars.includes('pilotalex')) {
-            enteredChars = '';
-            clearInterval(interval);
-            interval = setInterval(() => {
-                generateStars(maxStars, activeStarStack, shootingStarsContainer);
-            }, spawnIntervalMs);
-        }
-
-        setTimeout(() => {
-        clearInterval(interval);
-        }, 10000);
-    });
-}
-
-/**
- * Helper function to create and spawn ``count`` stars and
- * populates the ``starStack`` array.
- * @param {Number} count 
- * @param {[Star]} starStack 
- * @param {HTMLElement} container 
- */
-function generateStars(count, starStack, container) {
-    const newStar = new Star(container);
-    newStar.spawn();
-
-    starStack.push(newStar.div);
-
-    if (starStack.length > count) {
-        const oldestStar = starStack.shift();
-        oldestStar.remove();
-    }
-}
-
-/**
- * Handles the show hide animations for the technology cards.
- */
-function showHideAnimations() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-            } else {
-                entry.target.classList.remove('show');
-            }
-        });
-    });
-
-    const hiddenElements = document.querySelectorAll('.hidden');
-    hiddenElements.forEach((elm) => observer.observe(elm));
 }
 
 /**
@@ -172,33 +81,31 @@ function createProjectCarousel() {
  * Creates the GitHub commit chart.
  */
 async function createCommitChart() {
-    const ctx = githubCommitsGraph.getContext('2d');
+    const githubUsername = 'AlexandreAero';
+    const currentYear = new Date().getFullYear();
+    const count = await getCountCommitsForYearAndMonth(githubUsername, currentYear);
+
+    const chartCfg = {
+        type: 'line',
+        data: {
+            labels: Object.keys(count),
+            datasets: [{
+                fill: true,
+                label: 'Total commit count this year.',
+                data: Object.values(count),
+                borderWidth: 4,
+                borderColor: 'rgb(115, 110, 250)',
+                lineTension: 0.35,
+                pointRadius: 0,
+                backgroundColor: 'rgba(115, 110, 250, 0.1)'
+            }]
+        }
+    };
 
     try {
-        const githubUsername = 'AlexandreAero';
-        const currentYear = new Date().getFullYear();
-        const count = await getCountCommitsForYearAndMonth(githubUsername, currentYear);
-
-        const chartCfg = {
-            type: 'line',
-            data: {
-                labels: Object.keys(count),
-                datasets: [{
-                    fill: true,
-                    label: 'Total commit count this year.',
-                    data: Object.values(count),
-                    borderWidth: 4,
-                    borderColor: 'rgb(115, 110, 250)',
-                    lineTension: 0.35,
-                    pointRadius: 0,
-                    backgroundColor: 'rgba(115, 110, 250, 0.1)'
-                }]
-            }
-        };
-        
         new Chart(githubCommitsGraph, chartCfg);
     } catch (error) {
-        console.error('Failed to create commit chart:', error);
+        console.error(`Failed to create commit chart: ${error}`);
     }
 }
 
@@ -251,9 +158,9 @@ async function getCountCommitsForYearAndMonth(username, year) {
     const sortedCommitCounts = {};
     Object.keys(commitCounts)
         .sort()
-        .forEach(monthYearString => {
-        sortedCommitCounts[monthYearString] = commitCounts[monthYearString];
-    });
+        .forEach((monthYearString) => {
+            sortedCommitCounts[monthYearString] = commitCounts[monthYearString];
+        });
 
     // Store the data in the cache
     localStorage.setItem(cacheKey, JSON.stringify(sortedCommitCounts));

@@ -1,64 +1,76 @@
 const rawPostUrl = 'https://raw.githubusercontent.com/AlexandreAero/alexandreaero.github.io/main/posts/';
 const repoContentUrl = 'https://api.github.com/repos/AlexandreAero/alexandreaero.github.io/contents/posts';
 
-const converter = new showdown.Converter({ metadata: true });
-
 /**
- * Opens the blog post located at ``url``.
- * @param {String} url 
+ * Handles the blog system and its UI.
  */
-function openPost(url) {
-    location.href = './post.html';
-    sessionStorage.setItem('page', url);
-}
+class Blog {
+    /**
+     * Creates the blog system. The parameter is the parent of
+     * the blog posts UI.
+     * @param {HTMLElement} postContainer 
+     */
+    constructor(postContainer) {
+        this.container = postContainer;
+        this.converter = new showdown.Converter({ metadata: true });
 
-/**
- * Creates the HTML Dom of a post.
- * @param {String} url 
- * @param {Object} metadata 
- * @returns 
- */
-function renderPost(url, metadata) {
-    const tags = metadata.tags.split(';');
-    return `
-        <div class="post" onclick="openPost('${url}')">
-            <h2 class="date">${metadata.date}</h2>
-            <div class="post-content">
-                <img class="thumbnail" src="${metadata.thumbnail}">
-                <h1 class="title">${metadata.title}</h1>
-                <div class="tags-container">
-                    ${tags.map(tag => `<h1>${tag}</h1>`).join('')}
-                </div>
-                <p>${metadata.description_1}</p>
-                <p>${metadata.description_2}</p>
-            </div>
-        </div>
-        <hr>`;
-}
+        this.init();
+    }
 
-/**
- * Loads the blog posts and builds the UI for them.
- * @param {[String]} postUrls 
- */
-async function buildPosts(postUrls) {
-    const postHolder = document.getElementById('blog-posts');
-
-    try {
-        for (const url of postUrls) {
-            const response = await fetch(url);
-            const text = await response.text();
-            const html = converter.makeHtml(text);
-            const metadata = converter.getMetadata();
-            const postHtml = renderPost(url, metadata);
-            postHolder.insertAdjacentHTML('afterbegin', postHtml);
+    /**
+     * Initializes the blog system.
+     */
+    async init() {
+        try {
+            const urls = await this.getPostURLs();
+            await this.build(urls);
+        } catch (error) {
+            throw error;
         }
-    } catch (error) {
-        console.error(error);
+    }
+
+    /**
+     * Fetches the URLs of the blog posts.
+     * @returns {[String]}
+     */
+    async getPostURLs() {
+        try {
+            const response = await fetch(repoContentUrl);
+            const data = await response.json();
+            return data.map(item => `${rawPostUrl}${item.name}`);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    /**
+     * Creates the UI for the blog posts.
+     * @param {[String]} postUrls 
+     */
+    async build(postUrls) {
+        try {
+            for (const url of postUrls) {
+                const response = await fetch(url);
+                const text = await response.text();
+
+                this.converter.makeHtml(text);
+
+                const metadata = this.converter.getMetadata();
+                const post = new BlogPost(url,
+                                          metadata.title, 
+                                          metadata.author,
+                                          metadata.date, 
+                                          metadata.description,
+                                          metadata);
+                const postHtml = post.getPreviewView();
+
+                this.container.appendChild(postHtml);
+            }
+        } catch (error) {
+            throw error;
+        }
     }
 }
 
-fetch(repoContentUrl)
-    .then((response) => response.json())
-    .then((data) => data.map(item => `${rawPostUrl}${item.name}`))
-    .then(buildPosts)
-    .catch((error) => console.error(error));
+const container = document.getElementById('blog-posts');
+const blog = new Blog(container);

@@ -1,35 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Pilot Alex</title>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <link rel="shortcut icon" href="./assets/Mandalorian.png">
-  <link rel="stylesheet" href="./blog.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
-  <script src="./blog.js"></script>
-</head>
-<body>
-  <header>
-    <a class="back-button" href="./index.html">
-      <div class="back-button-grid-content">  
-        <img src="./assets/left-arrow.svg">
-        <h1>Back to home page</h1>
+<html lang="en-EN" dir="ltr">
+  <head>
+    <title>Pilot Alex</title>
+    <meta charset="utf-8"/>
+    <meta name="description" content="Blog">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="author" content="Pilot Alex">
+    <link href="../css/blog.css" rel="stylesheet">
+    <link href="../images/Mandalorian.png" rel="shortcut icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <a class="back-button" href="../index.html">
+        <div class="back-button-grid-content">  
+          <img src="../images/left-arrow.svg">
+          <h1>Back to home page</h1>
+        </div>
+      </a>
+      <img class="logo" src="../images/Mandalorian.png">
+      <h2 class="name-text">Pilot Alex</h2>
+      <div class="socials-grid">
+        <input type="image" onclick="location.href='https://github.com/AlexandreAero'" src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Github_white.svg">
+        <input type="image" onclick="location.href='https://www.instagram.com/pilotalex_28'" src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Instagram_white.svg">
+        <input type="image" onclick="location.href='https://www.instagram.com/pilotalex_28'" src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Twitter_white.svg">
+        <input type="image" onclick="location.href='https://www.youtube.com/channel/UC2f4gw46p9B9r5kDC93s1nA'" src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Youtube_white.svg">
+        <input type="image" onclick="location.href='https://open.spotify.com/user/1rcw0fq6c7is8liqxb7om7obx?si=ba7511d27f4d40f8'" src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Spotify_white.svg">
+        <input type="image" onclick="location.href='https://www.instagram.com/pilotalex_28'" src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Discord_white.svg">
       </div>
-    </a>
-    <img class="logo" src="./assets/Mandalorian.png">
-    <h2 class="name-text">Pilot Alex</h2>
-    <div class="socials-grid">
-      <input type="image" onclick="location.href='https://github.com/AlexandreAero'" src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Github_white.svg">
-      <input type="image" onclick="location.href='https://www.instagram.com/pilotalex_28'" src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Instagram_white.svg">
-      <input type="image" onclick="location.href='https://www.instagram.com/pilotalex_28'" src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Twitter_white.svg">
-      <input type="image" onclick="location.href='https://www.youtube.com/channel/UC2f4gw46p9B9r5kDC93s1nA'" src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Youtube_white.svg">
-      <input type="image" onclick="location.href='https://open.spotify.com/user/1rcw0fq6c7is8liqxb7om7obx?si=ba7511d27f4d40f8'" src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Spotify_white.svg">
-      <input type="image" onclick="location.href='https://www.instagram.com/pilotalex_28'" src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Discord_white.svg">
+    </header>
+    <hr>
+    <div id="blog-posts">
+      <!--Blog posts dynamically added here-->
     </div>
-  </header>
-  <hr>
-  <div id="blog-posts">
-    <!--Blog posts dynamically added here-->
-  </div>
-</body>
+    <script src="../js/blog.js"></script>
+    <script src="../js/blogPost.js"></script>
+  </body>
+</html>
